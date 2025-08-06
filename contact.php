@@ -13,118 +13,300 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $fout = "Ongeldig e-mailadres.";
     } else {
-        $to = "jouw-email@example.com";
-        $subject = "Nieuw bericht via contactformulier";
-        $body = "Je hebt een nieuw bericht ontvangen via het contactformulier op jouwsite.nl\n\n"
+        $to = "info@buddyfilmfoundation.com";
+        $subject = "Nieuw bericht via contactformulier - Buddy Film Foundation";
+        $body = "Je hebt een nieuw bericht ontvangen via het contactformulier op buddyfilmfoundation.com\n\n"
               . "Naam: $naam\n"
               . "Email: $email\n\n"
               . "Bericht:\n$bericht\n";
 
-        $headers = "From: no-reply@jouwsite.nl\r\n";
+        $headers = "From: no-reply@buddyfilmfoundation.com\r\n";
         $headers .= "Reply-To: " . filter_var($email, FILTER_SANITIZE_EMAIL) . "\r\n";
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-        if (mail($to, $subject, $body, $headers)) {
-            $succes = "Bericht verzonden!";
+        // Voor lokale ontwikkeling - sla het bericht op in een bestand
+        if (php_sapi_name() === 'cli' || strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false) {
+            // Lokale omgeving - sla op in bestand
+            $log_entry = date('Y-m-d H:i:s') . " - " . $naam . " (" . $email . "): " . $bericht . "\n";
+            $log_file = 'contact_messages.txt';
+            if (file_put_contents($log_file, $log_entry, FILE_APPEND | LOCK_EX)) {
+                $succes = "Bericht verzonden! We nemen zo snel mogelijk contact met je op.";
+            } else {
+                $fout = "Fout bij verzenden, probeer later opnieuw.";
+            }
         } else {
-            $fout = "Fout bij verzenden, probeer later.";
+            // Productie omgeving - gebruik mail() functie
+            if (mail($to, $subject, $body, $headers)) {
+                $succes = "Bericht verzonden! We nemen zo snel mogelijk contact met je op.";
+            } else {
+                $fout = "Fout bij verzenden, probeer later opnieuw.";
+            }
         }
     }
 }
 ?>
 
-<!-- STYLING -->
 <style>
 body {
     background-color: black;
     color: white;
     font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-h1 {
-    color: rgba(0, 130, 137, 1);
-    font-weight: bold;
+.contact-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.contact-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 3rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.contact-header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
-.form-control,
-.form-control:focus {
-    background-color: #1c1c1c;
-    color: white;
-    border: 1px solid #555;
-}
-
-label {
+.contact-header h1 {
+    color: rgba(0, 130, 137, 1);
+    font-size: 2.5rem;
     font-weight: bold;
+    margin-bottom: 0.5rem;
 }
 
-.btn-primary {
+.contact-header p {
+    color: #ccc;
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.form-control {
+    background-color: #2a2a2a;
+    border: 1px solid #555;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: #2a2a2a;
+    border-color: rgba(0, 130, 137, 1);
+    color: white;
+    box-shadow: 0 0 0 0.2rem rgba(0, 130, 137, 0.25);
+}
+
+.form-label {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.btn-contact {
     background-color: rgba(0, 130, 137, 1);
     border: none;
-    font-weight: bold;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
 }
 
-.btn-primary:hover {
+.btn-contact:hover {
     background-color: #00676d;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 130, 137, 0.3);
 }
 
 .alert {
+    border-radius: 8px;
     padding: 1rem;
-    border-radius: 5px;
     margin-bottom: 1.5rem;
+    border: none;
 }
 
 .alert-danger {
     background-color: #7f1d1d;
     color: white;
+    border-left: 4px solid #dc3545;
 }
 
 .alert-success {
     background-color: #14532d;
     color: white;
+    border-left: 4px solid #28a745;
 }
 
-.container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    max-width: 600px;
-    margin: auto;
-    margin-top: 3rem;
-    margin-bottom: 4rem;
+.form-floating {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-floating input,
+.form-floating textarea {
+    height: 3.5rem;
+}
+
+.form-floating textarea {
+    height: 8rem;
+    resize: vertical;
+}
+
+.form-floating label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 1rem 0.75rem;
+    pointer-events: none;
+    border: 1px solid transparent;
+    transform-origin: 0 0;
+    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+    color: #ccc;
+}
+
+.form-floating input:focus ~ label,
+.form-floating input:not(:placeholder-shown) ~ label,
+.form-floating textarea:focus ~ label,
+.form-floating textarea:not(:placeholder-shown) ~ label {
+    opacity: .65;
+    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
+.back-link {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.back-link a {
+    color: rgba(0, 130, 137, 1);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.back-link a:hover {
+    color: white;
+}
+
+.contact-info {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid rgba(0, 130, 137, 1);
+}
+
+.contact-info h3 {
+    color: rgba(0, 130, 137, 1);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    margin: 0.5rem 0;
+    color: #ccc;
+}
+
+.contact-info a {
+    color: rgba(0, 130, 137, 1);
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .contact-card {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .contact-header h1 {
+        font-size: 2rem;
+    }
 }
 </style>
 
-<!-- CONTENT -->
-<div class="container">
-    <h1>Contact</h1>
-
-    <?php if ($fout): ?>
-    <div class="alert alert-danger"><?= htmlspecialchars($fout) ?></div>
-    <?php endif; ?>
-
-    <?php if ($succes): ?>
-    <div class="alert alert-success"><?= htmlspecialchars($succes) ?></div>
-    <?php endif; ?>
-
-    <form method="post" novalidate>
-        <div class="mb-3">
-            <label for="naam">Naam</label>
-            <input name="naam" type="text" class="form-control" required
-                value="<?= htmlspecialchars($_POST['naam'] ?? '') ?>">
+<div class="contact-container">
+    <div class="contact-card">
+        <div class="contact-header">
+            <h1>Get in Touch</h1>
+            <p>Have a question or want to collaborate? We'd love to hear from you.</p>
         </div>
-        <div class="mb-3">
-            <label for="email">Email</label>
-            <input name="email" type="email" class="form-control" required
-                value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
+
+        <div class="contact-info">
+            <h3><i class="fas fa-info-circle me-2"></i>Contact Information</h3>
+            <p><i class="fas fa-envelope me-2"></i><a href="mailto:info@buddyfilmfoundation.com">info@buddyfilmfoundation.com</a></p>
+            <p><i class="fas fa-phone me-2"></i>+31 6 27459194</p>
+            <p><i class="fas fa-clock me-2"></i>Mon, Tue, Thu: 10:00-18:00</p>
         </div>
-        <div class="mb-3">
-            <label for="bericht">Bericht</label>
-            <textarea name="bericht" class="form-control" rows="5"
-                required><?= htmlspecialchars($_POST['bericht'] ?? '') ?></textarea>
+
+        <?php if ($fout): ?>
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <?= htmlspecialchars($fout) ?>
         </div>
-        <button type="submit" class="btn btn-primary">Verstuur</button>
-    </form>
+        <?php endif; ?>
+
+        <?php if ($succes): ?>
+        <div class="alert alert-success">
+            <i class="fas fa-check-circle me-2"></i>
+            <?= htmlspecialchars($succes) ?>
+        </div>
+        <?php endif; ?>
+
+        <form method="post" action="">
+            <div class="form-floating">
+                <input type="text" name="naam" id="naam" class="form-control" 
+                       placeholder="Your Name" required value="<?= htmlspecialchars($_POST['naam'] ?? '') ?>">
+                <label for="naam">Your Name</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="email" name="email" id="email" class="form-control" 
+                       placeholder="Your Email" required value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
+                <label for="email">Your Email</label>
+            </div>
+
+            <div class="form-floating">
+                <textarea name="bericht" id="bericht" class="form-control" 
+                          placeholder="Your Message" required><?= htmlspecialchars($_POST['bericht'] ?? '') ?></textarea>
+                <label for="bericht">Your Message</label>
+            </div>
+
+            <button type="submit" class="btn btn-contact">
+                <i class="fas fa-paper-plane me-2"></i>
+                Send Message
+            </button>
+        </form>
+
+        <div class="back-link">
+            <a href="index.php">
+                <i class="fas fa-arrow-left me-1"></i>
+                Back to Home
+            </a>
+        </div>
+    </div>
 </div>
 
 <?php include 'inc/footer.php'; ?>

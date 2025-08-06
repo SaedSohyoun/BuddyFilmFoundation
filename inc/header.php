@@ -11,42 +11,49 @@ if (session_status() === PHP_SESSION_NONE) {
     <title>BuddyFilmFoundation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Extra styling voor zwarte achtergrond + witte tekst + sticky layout -->
     <style>
-        html,
-        body {
-            height: 100%;
-            background-color: black;
-            color: white;
-            margin: 0;
-            padding: 0;
-            font-weight: bold;
-        }
+    html,
+    body {
+        height: 100%;
+        background-color: black;
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
 
-        .page-container {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
 
-        main {
-            flex: 1;
-        }
+    main {
+        flex: 1;
+    }
 
-        a.nav-link,
-        a.navbar-brand {
-            color: white;
-        }
+    a.nav-link,
+    a.navbar-brand {
+        color: white;
+    }
 
-        a.nav-link:hover,
-        a.navbar-brand:hover {
-            color: rgba(0, 130, 137, 1)
-        }
+    a.nav-link:hover,
+    a.navbar-brand:hover {
+        color: rgba(0, 130, 137, 1)
+    }
 
-        .navbar.bg-dark {
-            background-color: #000 !important;
-        }
+    .nav-link[href="index.php"]:hover,
+    .nav-link[href="filmmakers.php"]:hover,
+    .nav-link[href="#"]:hover {
+        color: white !important;
+        transition: color 0.3s ease;
+    }
+
+    .navbar.bg-dark {
+        background-color: #000 !important;
+    }
     </style>
 </head>
 
@@ -56,7 +63,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -64,34 +70,44 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/mijn-login/index.php">Home</a>
+                            <a class="nav-link" href="index.php" style="color: rgba(0, 130, 137, 1) !important;">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/mijn-login/filmmakers.php">Portfolios</a>
+                            <a class="nav-link" href="filmmakers.php" style="color: rgba(0, 130, 137, 1) !important;">Portfolios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/mijn-login/contact.php">Contact</a>
+                            <a class="nav-link" href="foundation.php">Foundation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="casting.php">Casting</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="production.php">Production</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="color: rgba(0, 130, 137, 1) !important;">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.php">Contact</a>
                         </li>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/mijn-login/admin/dashboard.php">Admin</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin/dashboard.php">Admin</a>
+                        </li>
                         <?php elseif (isset($_SESSION['rol']) && $_SESSION['rol'] === 'filmmaker'): ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/mijn-login/filmmaker/dashboard.php">Mijn Portfolio</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="filmmaker/dashboard.php">Mijn Portfolio</a>
+                        </li>
                         <?php endif; ?>
-                    </ul>
-                    <ul class="navbar-nav">
                         <?php if (isset($_SESSION['gebruikersnaam'])): ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/mijn-login/logout.php">Uitloggen
-                                    (<?= htmlspecialchars($_SESSION['gebruikersnaam']) ?>)</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php">Uitloggen
+                                (<?= htmlspecialchars($_SESSION['gebruikersnaam']) ?>)</a>
+                        </li>
                         <?php else: ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/mijn-login/login.php">Inloggen</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.php">Login</a>
+                        </li>
                         <?php endif; ?>
                     </ul>
                 </div>
