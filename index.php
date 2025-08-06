@@ -15,11 +15,13 @@ body {
 }
 
 h1.h1 {
-    color: rgba(0, 130, 137, 1);
-    font-size: 2.5rem;
+    color: rgba(0, 186, 196, 1);
+    font-size: 1.5rem;
     margin-left: 1.5rem;
-    margin-top: 2rem;
-    font-weight: bold;
+    margin-top: 1rem;
+    position: relative;
+    left: -75px;
+    padding-bottom: 10px;
 }
 
 h2 {
@@ -38,19 +40,23 @@ p {
 
 img.logo {
     margin-left: 1.5rem;
-    border-radius: 8px;
-    max-width: 70%;
+    max-width: 60%;
     height: auto;
+    position: relative;
+    left: -220px;
+    padding-bottom: 10px;
 }
 
 .btn-outline-primary {
     font-size: 1.1rem;
-    padding: 0.6rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     border-radius: 30px;
     color: rgba(0, 130, 137, 1);
     border: 2px solid rgba(0, 130, 137, 1);
     transition: background-color 0.3s, color 0.3s;
     text-decoration: none;
+    position: relative;
+    left: -70px;
 }
 
 .btn-outline-primary:hover {
