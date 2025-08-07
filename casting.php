@@ -26,15 +26,11 @@ if ($zoekterm !== '') {
 body {
     background-color: black;
     color: white;
+    margin: 0;
+    padding: 0;
     font-family: 'Segoe UI', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.page-container {
-    flex: 1;
-    padding: 2rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .page-header {
@@ -272,17 +268,17 @@ body {
     .page-header h1 {
         font-size: 2rem;
     }
-    
+
     .search-form {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .video-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
     .page-container {
         padding: 1rem;
     }
@@ -298,14 +294,13 @@ body {
     <div class="container">
         <div class="search-section">
             <form method="get" class="search-form">
-                <input type="text" name="zoekterm" class="form-control" 
-                       placeholder="Search Casting videos..." 
-                       value="<?= htmlspecialchars($zoekterm) ?>">
+                <input type="text" name="zoekterm" class="form-control" placeholder="Search Casting videos..."
+                    value="<?= htmlspecialchars($zoekterm) ?>">
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-search me-2"></i>Search
                 </button>
-                <button type="button" class="btn btn-secondary" 
-                        onclick="window.location.href=window.location.pathname;">
+                <button type="button" class="btn btn-secondary"
+                    onclick="window.location.href=window.location.pathname;">
                     <i class="fas fa-undo me-2"></i>Reset
                 </button>
             </form>
@@ -315,7 +310,8 @@ body {
         <div class="no-results">
             <i class="fas fa-search"></i>
             <h3>No videos found</h3>
-            <p><?= $zoekterm ? 'No Casting videos match your search criteria.' : 'No Casting videos available yet.' ?></p>
+            <p><?= $zoekterm ? 'No Casting videos match your search criteria.' : 'No Casting videos available yet.' ?>
+            </p>
         </div>
         <?php else: ?>
         <div class="video-grid">
@@ -326,14 +322,15 @@ body {
                     <p class="video-description"><?= nl2br(htmlspecialchars($video['beschrijving'])) ?></p>
 
                     <?php if (!empty($video['embed_code'])): ?>
-                        <?php if (strpos($video['embed_code'], 'NPO_LINK:') === 0):
+                    <?php if (strpos($video['embed_code'], 'NPO_LINK:') === 0):
                             $npoUrl = substr($video['embed_code'], strlen('NPO_LINK:')); ?>
-                        <a href="<?= htmlspecialchars($npoUrl) ?>" target="_blank" rel="noopener noreferrer" class="video-link">
-                            <i class="fas fa-play me-2"></i>Watch NPO Video
-                        </a>
-                        <?php else: ?>
-                        <div class="video-embed"><?= $video['embed_code'] ?></div>
-                        <?php endif; ?>
+                    <a href="<?= htmlspecialchars($npoUrl) ?>" target="_blank" rel="noopener noreferrer"
+                        class="video-link">
+                        <i class="fas fa-play me-2"></i>Watch NPO Video
+                    </a>
+                    <?php else: ?>
+                    <div class="video-embed"><?= $video['embed_code'] ?></div>
+                    <?php endif; ?>
                     <?php elseif (!empty($video['video_link'])): ?>
                     <a href="<?= htmlspecialchars($video['video_link']) ?>" class="video-link" target="_blank">
                         <i class="fas fa-play me-2"></i>Watch Video
@@ -354,7 +351,7 @@ body {
                             <i class="fas fa-edit me-1"></i>Edit
                         </a>
                         <a href="admin/verwijder_video.php?id=<?= $video['id'] ?>" class="btn btn-danger"
-                           onclick="return confirm('Are you sure you want to delete this video?');">
+                            onclick="return confirm('Are you sure you want to delete this video?');">
                             <i class="fas fa-trash me-1"></i>Delete
                         </a>
                     </div>
