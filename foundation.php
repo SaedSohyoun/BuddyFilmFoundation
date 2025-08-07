@@ -200,6 +200,8 @@ body {
     text-decoration: none;
 }
 
+
+
 .no-video {
     color: rgba(0, 130, 137, 1);
     font-style: italic;
@@ -327,7 +329,7 @@ body {
                         <?php if (strpos($video['embed_code'], 'NPO_LINK:') === 0):
                             $npoUrl = substr($video['embed_code'], strlen('NPO_LINK:')); ?>
                         <a href="<?= htmlspecialchars($npoUrl) ?>" target="_blank" rel="noopener noreferrer" class="video-link">
-                            <i class="fas fa-external-link-alt me-2"></i>Watch on NPO.nl
+                            <i class="fas fa-play me-2"></i>Watch NPO Video
                         </a>
                         <?php else: ?>
                         <div class="video-embed"><?= $video['embed_code'] ?></div>

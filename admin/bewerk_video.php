@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $titel = $_POST['titel'] ?? '';
     $beschrijving = $_POST['beschrijving'] ?? '';
     $embed_code = $_POST['embed_code'] ?? '';
-    $tag = $_POST['tag'] ?? ''; // één enkele tag
+    $tag = $_POST['tag'] ?? '';
 
     if (empty($titel) || empty($embed_code)) {
         $fout = "Titel en embed-code zijn verplicht.";

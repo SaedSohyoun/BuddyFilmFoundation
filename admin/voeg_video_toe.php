@@ -141,9 +141,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fout = "Ongeldige link. Alleen YouTube, Vimeo of NPO wordt ondersteund.";
         } else {
             $tag = preg_replace('/[^a-zA-Z0-9 ]/', '', $tag);
-            $kolom = 'tags'; // of pas aan als je kolom anders heet
-
-            $stmt = $conn->prepare("INSERT INTO videos (titel, beschrijving, embed_code, $kolom) VALUES (?, ?, ?, ?)");
+            
+            $stmt = $conn->prepare("INSERT INTO videos (titel, beschrijving, embed_code, tags) VALUES (?, ?, ?, ?)");
             $stmt->bind_param('ssss', $titel, $beschrijving, $embed_code, $tag);
 
             if ($stmt->execute()) {
