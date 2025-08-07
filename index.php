@@ -187,7 +187,7 @@ body {
 
 .new-slider-wrapper {
     position: relative;
-    height: 400px;
+    height: 600px;
     overflow: hidden;
     border-radius: 20px;
     background: linear-gradient(135deg, rgba(0, 130, 137, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
@@ -205,6 +205,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.new-slider-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 100, 200, 0.3);
+    z-index: 1;
+    border-radius: 20px;
 }
 
 .new-slider-item.active {
@@ -255,6 +267,39 @@ body {
 
 .new-slider-btn-next {
     right: 20px;
+}
+
+.slider-text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    z-index: 2;
+    padding: 3rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+}
+
+.slider-text-overlay h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    line-height: 1.2;
+}
+
+.slider-text-overlay p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 800px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .new-slider-dots {
@@ -1058,7 +1103,8 @@ body {
         </div>
     </div>
 </div>
-
+<br><br>
+<h1 style="color: rgba(0, 130, 137, 1); font-weight: bold; padding-left: 2rem;">BUDDY NEWS</h1>
 <!-- New Image Slider Section -->
 <div class="new-image-slider-section">
     <div class="new-slider-container">
@@ -1068,9 +1114,21 @@ body {
         <div class="new-slider-wrapper">
             <div class="new-slider-item active" data-slide="0">
                 <img src="uploads/2pic/rat.jpg" alt="Buddy Film Foundation" class="new-slider-image">
+                <div class="slider-text-overlay">
+                    <h3>We need your help to bring our new</h3>
+                    <h3>production to reality—</h3>
+                    <p>a powerful story about how war robs children of their innocence.</p>
+                </div>
             </div>
             <div class="new-slider-item" data-slide="1">
                 <img src="uploads/2pic/ibn.jpg" alt="Buddy Film Casting" class="new-slider-image">
+                <div class="slider-text-overlay">
+                    <h3>Ik Ben Nieuw Is now live!</h3>
+                    <p>Our latest production, Ik Ben Nieuw, premiered on November 1st at the Cinekid Festival. Explore
+                        our collection of 5 short films and a music video featuring artist Jay Way. These stories follow
+                        four newcomer children and their friends as they navigate the challenges and joys of building a
+                        new life in a new country.</p>
+                </div>
             </div>
         </div>
         <button class="new-slider-btn new-slider-btn-next" onclick="changeNewSliderImage(1)">
@@ -1082,7 +1140,7 @@ body {
         <span class="new-slider-dot" onclick="goToNewSliderImage(1)"></span>
     </div>
 </div>
-
+<br><br><br><br>
 <!-- About Section -->
 <div class="container">
     <div class="content-section">
@@ -1114,7 +1172,7 @@ body {
         </div>
         <?php endif; ?>
     </div>
-
+    <br>
     <!-- Who We Are Section -->
     <div class="who-we-are-section">
         <div class="who-we-are-content">
