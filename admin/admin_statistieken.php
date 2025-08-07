@@ -76,7 +76,7 @@ h5 {
 
 /* Cards styling */
 .card {
-    background-color: rgba(0, 130, 137, 1);
+    background-color: #1e1e1e;
     border: 1px solid rgba(0, 130, 137, 1);
     border-radius: 0.5rem;
 }
@@ -121,6 +121,59 @@ h5 {
     color: white;
 }
 
+/* Modern Dashboard Button */
+.btn-dashboard {
+    background: linear-gradient(135deg, rgba(0, 130, 137, 1) 0%, rgba(0, 100, 105, 1) 100%);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 130, 137, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-dashboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-dashboard:hover {
+    background: linear-gradient(135deg, rgba(0, 100, 105, 1) 0%, rgba(0, 130, 137, 1) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 130, 137, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-dashboard:hover::before {
+    left: 100%;
+}
+
+.btn-dashboard:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 130, 137, 0.3);
+}
+
+.btn-dashboard i {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
 /* Cards body padding */
 .card-body {
     padding: 1.25rem 1.5rem;
@@ -128,7 +181,7 @@ h5 {
 
 /* Canvas styling */
 canvas {
-    background-color: #1e1e1e;
+    background-color: #000000ff;
     border-radius: 0.5rem;
     display: block;
     margin: 0 auto;
@@ -180,9 +233,9 @@ canvas {
         <div class="col-md-6">
             <div class="card h-100 shadow">
                 <div class="card-body">
-                    <h5 class="card-title text-center">📸 Profielfoto Statistieken</h5>
-                    <p>✅ Met foto: <strong><?= $metFoto ?></strong></p>
-                    <p>❌ Zonder foto: <strong><?= $zonderFoto ?></strong></p>
+                    <h5 class="card-title text-center" style="color: #ffffffff;">📸 Profielfoto Statistieken</h5>
+                    <p style="color: #ffffffff;">✅ Met foto: <strong><?= $metFoto ?></strong></p>
+                    <p style="color: #ffffffff;">❌ Zonder foto: <strong><?= $zonderFoto ?></strong></p>
                 </div>
             </div>
         </div>
@@ -190,7 +243,7 @@ canvas {
         <div class="col-md-6">
             <div class="card h-100 shadow">
                 <div class="card-body">
-                    <h5 class="card-title text-center">📈 Werkervaring per type</h5>
+                    <h5 class="card-title text-center" style="color: #ffffffff;">📈 Werkervaring per type</h5>
                     <canvas id="werkervaringChart" style="height: 300px;"></canvas>
                 </div>
             </div>
@@ -199,9 +252,9 @@ canvas {
         <div class="col-md-12 mt-4">
             <div class="card shadow">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Aantal leden per stad</h5>
+                    <h5 class="card-title text-center" style="color: #ffffffff;">Aantal leden per stad</h5>
                     <?php if (count($stadLabels) > 0): ?>
-                    <canvas id="stadChart" style="height: 300px;"></canvas>
+                    <canvas id="stadChart" style="height: 400px;"></canvas>
                     <?php else: ?>
                     <p class="text-center text-muted">Geen stadsgegevens beschikbaar.</p>
                     <?php endif; ?>
@@ -210,9 +263,11 @@ canvas {
         </div>
     </div>
 
-    <div class="text-center mt-4">
-        <a href="dashboard.php" class="btn btn-outline-secondary">← Terug naar Dashboard</a>
-    </div>
+         <div class="text-center mt-4">
+         <a href="dashboard.php" class="btn-dashboard">
+             <i class="fas fa-arrow-left"></i> Terug naar Dashboard
+         </a>
+     </div>
 </div>
 
 <!-- Chart.js -->
