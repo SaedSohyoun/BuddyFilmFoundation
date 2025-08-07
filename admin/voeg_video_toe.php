@@ -1,7 +1,6 @@
 <?php
 session_start();
 include '../inc/connectie.php';
-include '../inc/header.php';
 
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
     header('Location: ../login.php');
@@ -30,6 +29,38 @@ function genereerEmbedCode($url) {
 
     return false;
 }
+
+// Verwerk formulier hier voor HTML output
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $titel = trim($_POST['titel'] ?? '');
+    $beschrijving = trim($_POST['beschrijving'] ?? '');
+    $videolink = trim($_POST['videolink'] ?? '');
+    $tag = trim($_POST['tag'] ?? '');
+
+    if (empty($titel) || empty($beschrijving) || empty($videolink) || empty($tag)) {
+        $fout = "Vul alle velden in.";
+    } else {
+        $embed_code = genereerEmbedCode($videolink);
+        if (!$embed_code) {
+            $fout = "Ongeldige link. Alleen YouTube, Vimeo of NPO wordt ondersteund.";
+        } else {
+            $tag = preg_replace('/[^a-zA-Z0-9 ]/', '', $tag);
+            
+            $stmt = $conn->prepare("INSERT INTO videos (titel, beschrijving, embed_code, tags) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param('ssss', $titel, $beschrijving, $embed_code, $tag);
+
+            if ($stmt->execute()) {
+                header("Location: ../" . strtolower($tag) . ".php");
+                exit;
+            } else {
+                $fout = "Fout bij toevoegen: " . $conn->error;
+            }
+            $stmt->close();
+        }
+    }
+}
+
+include '../inc/header.php';
 ?>
 
 <!DOCTYPE html>
@@ -98,19 +129,6 @@ function genereerEmbedCode($url) {
         background-color: #444;
         border: none;
         color: white;
-    }
-
-    .alert-danger {
-        background-color: #7f1d1d;
-        color: white;
-        padding: 0.75rem;
-        margin-bottom: 1rem;
-        border-radius: 5px;
-    }
-
-    .alert-success {
-        background-color: #14532d;
-        color: white;
         padding: 0.75rem;
         margin-bottom: 1rem;
         border-radius: 5px;
@@ -124,38 +142,6 @@ function genereerEmbedCode($url) {
 </head>
 
 <body>
-
-    <?php
-// Verwerk formulier hier na header (zodat head apart blijft)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titel = trim($_POST['titel'] ?? '');
-    $beschrijving = trim($_POST['beschrijving'] ?? '');
-    $videolink = trim($_POST['videolink'] ?? '');
-    $tag = trim($_POST['tag'] ?? '');
-
-    if (empty($titel) || empty($beschrijving) || empty($videolink) || empty($tag)) {
-        $fout = "Vul alle velden in.";
-    } else {
-        $embed_code = genereerEmbedCode($videolink);
-        if (!$embed_code) {
-            $fout = "Ongeldige link. Alleen YouTube, Vimeo of NPO wordt ondersteund.";
-        } else {
-            $tag = preg_replace('/[^a-zA-Z0-9 ]/', '', $tag);
-            
-            $stmt = $conn->prepare("INSERT INTO videos (titel, beschrijving, embed_code, tags) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param('ssss', $titel, $beschrijving, $embed_code, $tag);
-
-            if ($stmt->execute()) {
-                header("Location: ../" . strtolower($tag) . ".php");
-                exit;
-            } else {
-                $fout = "Fout bij toevoegen: " . $conn->error;
-            }
-            $stmt->close();
-        }
-    }
-}
-?>
 
     <main>
         <h1>🎬 Video Toevoegen</h1>
