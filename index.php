@@ -14,6 +14,161 @@ body {
     line-height: 1.5;
 }
 
+/* Hero Slider Section */
+.hero-slider-section {
+    background: linear-gradient(135deg, rgba(0, 130, 137, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+    padding: 4rem 0;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 2rem;
+}
+
+.slider-wrapper {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(0, 130, 137, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+    border: 1px solid rgba(0, 130, 137, 0.2);
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-content {
+    text-align: center;
+    max-width: 800px;
+    z-index: 2;
+}
+
+.slide-title {
+    color: rgba(0, 130, 137, 1);
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.slide-description {
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.slide-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(0, 130, 137, 1) 0%, rgba(0, 100, 105, 1) 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 130, 137, 0.3);
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.slide-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 130, 137, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 130, 137, 0.8);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    background: rgba(0, 130, 137, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-btn-prev {
+    left: 20px;
+}
+
+.slider-btn-next {
+    right: 20px;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: rgba(0, 130, 137, 1);
+    transform: scale(1.2);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Hero Section */
 .hero-section {
     background: linear-gradient(135deg, rgba(0, 130, 137, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
@@ -128,6 +283,66 @@ body {
 
 .beheer-knop {
     margin-top: 2rem;
+}
+
+/* Statistics Section */
+.statistics-section {
+    background-color: #1a1a1a;
+    border-radius: 15px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    border: 1px solid #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.statistics-title {
+    color: rgba(0, 130, 137, 1);
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.statistics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    background: transparent;
+    border: none;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    color: #e0e0e0;
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 1px;
+}
+
+.stat-label {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
 }
 
 /* Team Section */
@@ -402,38 +617,64 @@ body {
     .hero-section {
         padding: 2rem 0;
     }
-    
+
     .hero-title {
         font-size: 1.2rem;
     }
-    
+
     .hero-logo {
         max-width: 80%;
     }
-    
+
     .btn-group-left {
         gap: 1rem;
     }
-    
-    .content-section, .team-section, .support-section, .contact-section {
+
+    .content-section,
+    .team-section,
+    .support-section,
+    .contact-section {
         padding: 2rem;
     }
-    
-    .support-content, .contact-content {
+
+    .support-content,
+    .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
+
     .team-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .contact-details {
         grid-template-columns: 1fr;
     }
-    
+
     .section-title {
         font-size: 2rem;
+    }
+    
+    .statistics-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .statistics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
     }
 }
 </style>
@@ -455,7 +696,8 @@ body {
 <div class="container">
     <div class="content-section">
         <h2 class="section-title">Over dit platform</h2>
-        <p class="section-text">Hier kun je snel navigeren naar verschillende video categorieën, speciaal voor jouw interessegebieden.</p>
+        <p class="section-text">Hier kun je snel navigeren naar verschillende video categorieën, speciaal voor jouw
+            interessegebieden.</p>
         <p class="section-text">Meer functionaliteiten en updates volgen binnenkort!</p>
 
         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
@@ -465,9 +707,37 @@ body {
         <?php endif; ?>
     </div>
 
+    <!-- Statistics Section -->
+    <div class="statistics-section">
+        <h2 class="statistics-title">BUDDY FILM NUMBERS</h2>
+        <div class="statistics-grid">
+            <div class="stat-card">
+                <div class="stat-number">23</div>
+                <div class="stat-label">complete film<br>productions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">206</div>
+                <div class="stat-label">registered film<br>professionals</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">different<br>nationalities</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">131</div>
+                <div class="stat-label">completed<br>castings</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Team Section -->
     <div class="team-section">
-        <h2 class="section-title">Ons Team</h2>
+        <h2 class="section-title" style="display: flex; align-items: center; justify-content: center;">BUDDY TEAM</h2>
+        <p style="display: flex; align-items: center; justify-content: center;">The Buddy Film Foundation was founded in
+            2017 by actress Dewi
+            Reijs,</p>
+        <p style="display: flex; align-items: center; justify-content: center;">director Dennis Overeem and producer
+            In-Soo Radstake.</p>
         <div class="team-grid">
             <?php
             $result = $conn->query("SELECT * FROM teamleden ORDER BY id ASC");
@@ -477,7 +747,8 @@ body {
                     : 'assets/img/default-team.png';
             ?>
             <div class="team-card">
-                <img src="<?= htmlspecialchars($foto) ?>" class="team-image" alt="<?= htmlspecialchars($lid['naam']) ?>">
+                <img src="<?= htmlspecialchars($foto) ?>" class="team-image"
+                    alt="<?= htmlspecialchars($lid['naam']) ?>">
                 <div class="team-content">
                     <h5 class="team-name"><?= htmlspecialchars($lid['naam']) ?></h5>
                     <h6 class="team-role"><?= htmlspecialchars($lid['functie']) ?></h6>
@@ -487,11 +758,74 @@ body {
         </div>
     </div>
 
+    <!-- Hero Slider Section -->
+    <div class="hero-slider-section">
+        <div class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slide active" data-slide="1">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Buddy Career Boost</h1>
+                        <p class="slide-description">Buddy Career Boost is a project created in 2019 for refugee film
+                            professionals based in the Netherlands. The purpose of it was to guide them into starting or
+                            continuing their career through workshops, Dutch courses, and speed dates to build their
+                            network. As a result and careful consideration, we selected two participants who are film
+                            directors and produced two short films: Revenge and a Smile.</p>
+                        <a href="filmmakers.php" class="slide-btn">
+                            <i class="fas fa-users"></i> Bekijk Filmmakers
+                        </a>
+                    </div>
+                </div>
+
+                <div class="slide" data-slide="2">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Rotterdam Writers' Rooms</h1>
+                        <p class="slide-description">The Rotterdam Writers' Rooms project, in collaboration with the
+                            Buddy Film Foundation, is a long-term program starting in January 2024. It includes in-depth
+                            workshops, audience interactions, and AV sector meet-ups, all at no cost. We require a
+                            strong commitment but offer generous compensation. Three selection rounds will lead to the
+                            formation of writing teams for the rooms, guided by experienced script coaches.</p>
+                        <a href="casting.php" class="slide-btn">
+                            <i class="fas fa-theater-masks"></i> Bekijk Casting
+                        </a>
+                    </div>
+                </div>
+
+                <div class="slide" data-slide="3">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Trojaanse Wijven - a multicultural theatre experience</h1>
+                        <p class="slide-description">Actress and theater maker Dewi Reijs comes with a modern adaptation
+                            of Trojan Women by Euripides with stories from today.The play takes place on a floating
+                            stage in the swimming pool and the audience wears headphones. This is not a standard
+                            performance, but an intimate experience. The first swimming pool tour in the Netherlands!
+                        </p>
+                        <a href="production.php" class="slide-btn">
+                            <i class="fas fa-play-circle"></i> Bekijk Video's
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="slider-btn slider-btn-prev" onclick="changeSlide(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-btn slider-btn-next" onclick="changeSlide(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+    </div>
+
     <!-- Support Us Section -->
     <div class="support-section">
         <div class="support-content">
             <div>
-                <img src="uploads/BFF/73142347_2516680178556715_4378277983526322176_n.jpg" alt="Support Us" class="support-image">
+                <img src="uploads/BFF/73142347_2516680178556715_4378277983526322176_n.jpg" alt="Support Us"
+                    class="support-image">
             </div>
             <div>
                 <h2 class="section-title">Support Us</h2>
@@ -518,7 +852,7 @@ body {
         <div class="contact-content">
             <div class="contact-info">
                 <h2>CONTACT</h2>
-                
+
                 <div class="contact-group">
                     <div class="contact-label">ADDRESS</div>
                     <div class="contact-details">
@@ -609,5 +943,49 @@ body {
         </div>
     </div>
 </div>
+
+<script>
+// Slider functionality
+let currentSlideIndex = 1;
+const totalSlides = 3;
+
+function showSlide(n) {
+    // Hide all slides
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    // Show current slide
+    if (n > totalSlides) currentSlideIndex = 1;
+    if (n < 1) currentSlideIndex = totalSlides;
+
+    const currentSlide = document.querySelector(`[data-slide="${currentSlideIndex}"]`);
+    const currentDot = document.querySelector(`.dot:nth-child(${currentSlideIndex})`);
+
+    if (currentSlide) currentSlide.classList.add('active');
+    if (currentDot) currentDot.classList.add('active');
+}
+
+function changeSlide(direction) {
+    showSlide(currentSlideIndex += direction);
+}
+
+function currentSlide(n) {
+    currentSlideIndex = n;
+    showSlide(currentSlideIndex);
+}
+
+// Auto-advance slides every 5 seconds
+setInterval(() => {
+    changeSlide(1);
+}, 5000);
+
+// Initialize slider
+document.addEventListener('DOMContentLoaded', function() {
+    showSlide(currentSlideIndex);
+});
+</script>
 
 <?php include 'inc/footer.php'; ?>
