@@ -799,16 +799,12 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 130, 137, 0.3);
     margin-bottom: 2rem;
-    text-decoration: none;
-    display: inline-block;
 }
 
 .donate-btn:hover {
     background: linear-gradient(135deg, rgba(0, 100, 105, 1) 0%, rgba(0, 130, 137, 1) 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 130, 137, 0.4);
-    color: white;
-    text-decoration: none;
 }
 
 .payment-methods {
@@ -1392,7 +1388,7 @@ body {
                     <br><br>
                     We appreciate every contribution.
                 </p>
-                <a href="donate.php" class="donate-btn">Donate</a>
+                <button class="donate-btn">Donate</button>
                 <div class="payment-methods">
                     <img src="uploads/BFF/ideal.jpg" alt="iDeal" class="payment-method">
                     <img src="uploads/BFF/american-express.jpg" alt="American Express" class="payment-method">

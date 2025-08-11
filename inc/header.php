@@ -84,10 +84,12 @@ if ($is_admin || $is_filmmaker) {
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $base_path ?>index.php" style="color: rgba(0, 130, 137, 1) !important;">Home</a>
+                            <a class="nav-link" href="<?= $base_path ?>index.php"
+                                style="color: rgba(0, 130, 137, 1) !important;">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $base_path ?>filmmakers.php" style="color: rgba(0, 130, 137, 1) !important;">Portfolios</a>
+                            <a class="nav-link" href="<?= $base_path ?>filmmakers.php"
+                                style="color: rgba(0, 130, 137, 1) !important;">Portfolios</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $base_path ?>foundation.php">Foundation</a>
@@ -99,18 +101,22 @@ if ($is_admin || $is_filmmaker) {
                             <a class="nav-link" href="<?= $base_path ?>production.php">Production</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $base_path ?>donate.php" style="color: rgba(0, 130, 137, 1) !important;">Donate</a>
+                            <a class="nav-link" href="<?= $base_path ?>donate.php"
+                                style="color: rgba(0, 130, 137, 1) !important;">Donate</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $base_path ?>contact.php">Contact</a>
                         </li>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $is_admin ? $dashboard_path : 'admin/dashboard.php' ?>">Admin</a>
+                            <a class="nav-link"
+                                href="<?= $is_admin ? $dashboard_path : 'admin/dashboard.php' ?>">Admin</a>
                         </li>
                         <?php elseif (isset($_SESSION['rol']) && $_SESSION['rol'] === 'filmmaker'): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $is_filmmaker ? $dashboard_path : 'filmmaker/dashboard.php' ?>">Mijn Portfolio</a>
+                            <a class="nav-link"
+                                href="<?= $is_filmmaker ? $dashboard_path : 'filmmaker/dashboard.php' ?>">Mijn
+                                Portfolio</a>
                         </li>
                         <?php endif; ?>
                         <?php if (isset($_SESSION['gebruikersnaam'])): ?>
@@ -130,3 +136,5 @@ if ($is_admin || $is_filmmaker) {
 
         <main class="container mt-4">
             <!-- ✅ Toegevoegd: main-content wrapper -->
+            <main class="container mt-4">
+                <!-- ✅ Toegevoegd: main-content wrapper -->
