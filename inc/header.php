@@ -99,7 +99,7 @@ if ($is_admin || $is_filmmaker) {
                             <a class="nav-link" href="<?= $base_path ?>production.php">Production</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: rgba(0, 130, 137, 1) !important;">Donate</a>
+                            <a class="nav-link" href="<?= $base_path ?>donate.php" style="color: rgba(0, 130, 137, 1) !important;">Donate</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $base_path ?>contact.php">Contact</a>

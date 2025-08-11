@@ -214,6 +214,34 @@ body {
     font-size: 0.9rem;
 }
 
+.contact-button {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(0, 100, 105, 1) 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 130, 137, 0.3);
+    font-size: 0.9rem;
+}
+
+.contact-button:hover {
+    background: linear-gradient(135deg, rgba(0, 100, 105, 1) 0%, rgba(0, 130, 137, 1) 100%);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 130, 137, 0.4);
+}
+
+.contact-button i {
+    font-size: 0.8rem;
+}
+
 @media (max-width: 768px) {
     .filmmaker-name {
         font-size: 2rem;
@@ -260,10 +288,11 @@ body {
 
             <?php if (!empty($filmmaker['email'])): ?>
             <div class="info-item">
-                <div class="info-label">E-mail</div>
+                <div class="info-label">Contact</div>
                 <div class="info-value">
-                    <a
-                        href="mailto:<?= htmlspecialchars($filmmaker['email']) ?>"><?= htmlspecialchars($filmmaker['email']) ?></a>
+                    <a href="mailto:<?= htmlspecialchars($filmmaker['email']) ?>,info@buddyfilmfoundation.com?subject=Contact via BuddyFilmFoundation - <?= htmlspecialchars($filmmaker['naam']) ?>" class="contact-button">
+                        <i class="fas fa-envelope"></i> Neem Contact
+                    </a>
                 </div>
             </div>
             <?php endif; ?>

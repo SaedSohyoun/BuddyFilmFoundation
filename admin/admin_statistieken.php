@@ -30,6 +30,45 @@ $fotoResult = $conn->query("SELECT COUNT(*) AS met_foto FROM gebruikers WHERE ro
 $metFoto = $fotoResult->fetch_assoc()['met_foto'] ?? 0;
 $zonderFoto = $totalFilmmakers - $metFoto;
 
+// Donatie statistieken - check eerst of tabel bestaat
+$donatieStats = null;
+$alleDonaties = null;
+$recenteDonaties = 0;
+
+try {
+    // Check of de donaties tabel bestaat
+    $tableExists = $conn->query("SHOW TABLES LIKE 'donaties'");
+    
+    if ($tableExists->num_rows > 0) {
+        // Tabel bestaat, haal statistieken op
+        $donatieStats = $conn->query("SELECT 
+            COUNT(*) as totaal_donaties,
+            SUM(bedrag) as totaal_bedrag,
+            AVG(bedrag) as gemiddeld_bedrag,
+            MAX(bedrag) as hoogste_donatie,
+            MIN(bedrag) as laagste_donatie
+        FROM donaties")->fetch_assoc();
+
+        // Donaties van afgelopen 30 dagen
+        $date30DaysAgo = date('Y-m-d', strtotime('-30 days'));
+        $recenteDonaties = $conn->query("SELECT COUNT(*) as recent FROM donaties WHERE datum >= '$date30DaysAgo'")->fetch_assoc()['recent'] ?? 0;
+
+        // Alle donaties ophalen voor de tabel
+        $alleDonaties = $conn->query("SELECT * FROM donaties ORDER BY datum DESC, tijd DESC LIMIT 50");
+    }
+} catch (Exception $e) {
+    // Tabel bestaat niet, gebruik standaardwaarden
+    $donatieStats = null;
+    $alleDonaties = null;
+    $recenteDonaties = 0;
+}
+
+$totaalDonaties = $donatieStats['totaal_donaties'] ?? 0;
+$totaalBedrag = $donatieStats['totaal_bedrag'] ?? 0;
+$gemiddeldBedrag = $donatieStats['gemiddeld_bedrag'] ?? 0;
+$hoogsteDonatie = $donatieStats['hoogste_donatie'] ?? 0;
+$laagsteDonatie = $donatieStats['laagste_donatie'] ?? 0;
+
 // Steden ophalen
 $stedenResultaat = $conn->query("SELECT stad, COUNT(*) as aantal FROM gebruikers WHERE stad IS NOT NULL AND stad != '' GROUP BY stad ORDER BY aantal DESC");
 
@@ -99,7 +138,17 @@ h5 {
 
 .bg-warning {
     background-color: rgba(0, 0, 0, 1) !important;
-    color: black !important;
+    color: white !important;
+}
+
+.bg-info {
+    background-color: rgba(0, 0, 0, 1) !important;
+    color: white !important;
+}
+
+.bg-info {
+    background-color: rgba(0, 0, 0, 1) !important;
+    color: white !important;
 }
 
 /* Text center consistentie */
@@ -187,12 +236,114 @@ canvas {
     margin: 0 auto;
     max-width: 100%;
 }
+
+/* Table styling */
+.table {
+    color: white;
+    background-color: #1e1e1e;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.table th {
+    background-color: rgba(0, 130, 137, 0.2);
+    border-color: rgba(0, 130, 137, 0.3);
+    color: rgba(0, 130, 137, 1);
+    font-weight: 600;
+}
+
+.table td {
+    border-color: rgba(0, 130, 137, 0.2);
+    vertical-align: middle;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(0, 130, 137, 0.1);
+}
+
+.badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+}
+
+.badge-success {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.badge-warning {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.badge-info {
+    background-color: rgba(23, 162, 184, 0.2);
+    color: #17a2b8;
+    border: 1px solid rgba(23, 162, 184, 0.3);
+}
+
+.badge-secondary {
+    background-color: rgba(108, 117, 125, 0.2);
+    color: #6c757d;
+    border: 1px solid rgba(108, 117, 125, 0.3);
+}
+
+/* Table styling */
+.table {
+    color: white;
+    background-color: #1e1e1e;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.table th {
+    background-color: rgba(0, 130, 137, 0.2);
+    border-color: rgba(0, 130, 137, 0.3);
+    color: rgba(0, 130, 137, 1);
+    font-weight: 600;
+}
+
+.table td {
+    border-color: rgba(0, 130, 137, 0.2);
+    vertical-align: middle;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(0, 130, 137, 0.1);
+}
+
+.badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+}
+
+.badge-success {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.badge-warning {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.badge-info {
+    background-color: rgba(23, 162, 184, 0.2);
+    color: #17a2b8;
+    border: 1px solid rgba(23, 162, 184, 0.3);
+}
 </style>
 <div class="container my-5">
     <h1 class="mb-4 text-center">📊 Admin Statistieken</h1>
 
     <div class="row g-4">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="card bg-primary text-white text-center shadow">
                 <div class="card-body">
                     <h5 class="card-title">Gebruikers</h5>
@@ -201,7 +352,7 @@ canvas {
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="card bg-success text-white text-center shadow">
                 <div class="card-body">
                     <h5 class="card-title">Deelnemers</h5>
@@ -210,7 +361,7 @@ canvas {
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="card bg-danger text-white text-center shadow">
                 <div class="card-body">
                     <h5 class="card-title">Admins</h5>
@@ -219,11 +370,66 @@ canvas {
             </div>
         </div>
 
-        <div class="col-md-3">
-            <div class="card bg-danger text-white text-center shadow">
+        <div class="col-md-2">
+            <div class="card bg-warning text-white text-center shadow">
                 <div class="card-body">
-                    <h5 class="card-title">Nieuwe (7 dagen)</h5>
+                    <h5 class="card-title">Nieuwe(7d)</h5>
                     <p class="fs-2"><?= $newCount ?></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="card bg-info text-white text-center shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Donaties</h5>
+                    <p class="fs-2"><?= $totaalDonaties ?></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="card bg-success text-white text-center shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Totaal €</h5>
+                    <p class="fs-2">€<?= number_format($totaalBedrag, 2) ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donatie Statistieken -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title text-center" style="color: #ffffffff;">💰 Donatie Statistieken</h5>
+                    <div class="row text-center">
+                        <div class="col-md-3">
+                            <p style="color: #ffffffff;">📊 Totaal donaties: <strong><?= $totaalDonaties ?></strong></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p style="color: #ffffffff;">💶 Totaal bedrag:
+                                <strong>€<?= number_format($totaalBedrag, 2) ?></strong></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p style="color: #ffffffff;">📈 Gemiddeld:
+                                <strong>€<?= number_format($gemiddeldBedrag, 2) ?></strong></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p style="color: #ffffffff;">🕒 Recent (30d): <strong><?= $recenteDonaties ?></strong></p>
+                        </div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div class="col-md-6">
+                            <p style="color: #ffffffff;">⬆️ Hoogste donatie:
+                                <strong>€<?= number_format($hoogsteDonatie, 2) ?></strong></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="color: #ffffffff;">⬇️ Laagste donatie:
+                                <strong>€<?= number_format($laagsteDonatie, 2) ?></strong></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -263,11 +469,81 @@ canvas {
         </div>
     </div>
 
-         <div class="text-center mt-4">
-         <a href="dashboard.php" class="btn-dashboard">
-             <i class="fas fa-arrow-left"></i> Terug naar Dashboard
-         </a>
-     </div>
+    <!-- Donaties Overzicht -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title text-center" style="color: #ffffffff;">💰 Recente Donaties</h5>
+                    <?php if ($alleDonaties && $alleDonaties->num_rows > 0): ?>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Datum</th>
+                                    <th>Naam</th>
+                                    <th>Email</th>
+                                    <th>Bedrag</th>
+                                    <th>Donatie namens</th>
+                                    <th>Gehoord via</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($donatie = $alleDonaties->fetch_assoc()): ?>
+                                <tr>
+                                    <td><?= date('d-m-Y H:i', strtotime($donatie['datum'] . ' ' . $donatie['tijd'])) ?>
+                                    </td>
+                                    <td><?= htmlspecialchars($donatie['voornaam'] . ' ' . $donatie['achternaam']) ?>
+                                    </td>
+                                    <td><?= htmlspecialchars($donatie['email']) ?></td>
+                                    <td><strong>€<?= number_format($donatie['bedrag'], 2) ?></strong></td>
+                                    <td>
+                                        <?php 
+                                        switch($donatie['donatie_namens']) {
+                                            case 'myself':
+                                                echo '<span class="badge badge-info">Zichzelf</span>';
+                                                break;
+                                            case 'organization':
+                                                echo '<span class="badge badge-warning">Organisatie</span>';
+                                                break;
+                                            case 'someone-else':
+                                                echo '<span class="badge badge-success">Iemand anders</span>';
+                                                break;
+                                            default:
+                                                echo '<span class="badge badge-secondary">Niet opgegeven</span>';
+                                        }
+                                        ?>
+                                    </td>
+                                    <td><?= htmlspecialchars($donatie['gehoord_via']) ?></td>
+                                    <td>
+                                        <?php if ($donatie['status'] == 'completed'): ?>
+                                        <span class="badge badge-success">Voltooid</span>
+                                        <?php elseif ($donatie['status'] == 'pending'): ?>
+                                        <span class="badge badge-warning">In behandeling</span>
+                                        <?php else: ?>
+                                        <span class="badge badge-secondary">Onbekend</span>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <?php else: ?>
+                    <p class="text-center text-muted">Nog geen donaties ontvangen. <a href="../donaties_tabel.sql"
+                            class="text-info">Klik hier om de donaties tabel aan te maken.</a></p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="dashboard.php" class="btn-dashboard">
+            <i class="fas fa-arrow-left"></i> Terug naar Dashboard
+        </a>
+    </div>
 </div>
 
 <!-- Chart.js -->
