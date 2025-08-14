@@ -11,8 +11,8 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $id = intval($_GET['id']);
 
-// Haal filmmaker gegevens op
-$stmt = $conn->prepare("SELECT id, gebruikersnaam, naam, story, werkervaring, email, telefoon, profielfoto, stad FROM gebruikers WHERE id = ? AND rol = 'filmmaker'");
+// Haal filmmaker gegevens op - alleen goedgekeurde portfolios
+$stmt = $conn->prepare("SELECT id, gebruikersnaam, naam, story, werkervaring, email, telefoon, profielfoto, stad, portfolio_status FROM gebruikers WHERE id = ? AND rol = 'filmmaker'");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -24,6 +24,13 @@ if ($result->num_rows === 0) {
 }
 
 $filmmaker = $result->fetch_assoc();
+
+// Controleer of portfolio is goedgekeurd
+if ($filmmaker['portfolio_status'] !== 'approved') {
+    echo "<div class='container my-4 text-white'><p>Dit portfolio is nog niet goedgekeurd of is afgewezen.</p></div>";
+    include 'inc/footer.php';
+    exit;
+}
 $stmt->close();
 
 $profielfotoPad = 'uploads/profielfotos/' . $filmmaker['profielfoto'];

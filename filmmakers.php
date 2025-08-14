@@ -21,8 +21,8 @@ while ($row = $ervaringResult->fetch_assoc()) {
 }
 sort($ervaringen);
 
-// Query op basis van zoek en filter
-$query = "SELECT id, gebruikersnaam, naam, profielfoto, werkervaring FROM gebruikers WHERE rol = 'filmmaker'";
+// Query op basis van zoek en filter - alleen goedgekeurde portfolios
+$query = "SELECT id, gebruikersnaam, naam, profielfoto, werkervaring FROM gebruikers WHERE rol = 'filmmaker' AND portfolio_status = 'approved'";
 $params = [];
 $types = '';
 

@@ -350,7 +350,15 @@ body {
             <span class="card-action">Bekijk pagina</span>
         </a>
 
-        <a href="admin_statistieken.php" class="dashboard-card card-warning">
+        <a href="portfolio_moderatie.php" class="dashboard-card card-warning">
+            <span class="card-icon">✅</span>
+            <h3 class="card-title">Portfolio Moderatie</h3>
+            <p class="card-description">Controleer en keur filmmaker portfolios goed voordat ze online gaan.
+            </p>
+            <span class="card-action">Modereer portfolios</span>
+        </a>
+
+        <a href="admin_statistieken.php" class="dashboard-card card-info">
             <span class="card-icon">📊</span>
             <h3 class="card-title">Statistieken & Analytics</h3>
             <p class="card-description">Bekijk gedetailleerde statistieken, gebruikersanalytics en platform prestaties.

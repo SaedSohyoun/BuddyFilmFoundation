@@ -39,12 +39,44 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $beschrijving = $_POST['beschrijving'] ?? '';
     $embed_code = $_POST['embed_code'] ?? '';
     $tag = $_POST['tag'] ?? '';
+    $npo_image = $video['npo_image'] ?? ''; // Behoud bestaande afbeelding
+
+    // Verwerk thumbnail upload voor NPO video's
+    if (strpos($embed_code, 'NPO_LINK:') === 0 && isset($_FILES['npo_thumbnail']) && $_FILES['npo_thumbnail']['error'] === UPLOAD_ERR_OK) {
+        $upload_dir = '../uploads/npo_thumbnails/';
+        
+        // Maak upload directory aan als deze niet bestaat
+        if (!is_dir($upload_dir)) {
+            mkdir($upload_dir, 0755, true);
+        }
+        
+        $file_info = pathinfo($_FILES['npo_thumbnail']['name']);
+        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        
+        if (in_array(strtolower($file_info['extension']), $allowed_extensions)) {
+            $new_filename = 'npo_' . time() . '_' . uniqid() . '.' . $file_info['extension'];
+            $upload_path = $upload_dir . $new_filename;
+            
+            if (move_uploaded_file($_FILES['npo_thumbnail']['tmp_name'], $upload_path)) {
+                $npo_image = 'uploads/npo_thumbnails/' . $new_filename;
+                
+                // Verwijder oude thumbnail als deze bestaat
+                if (!empty($video['npo_image']) && file_exists('../' . $video['npo_image'])) {
+                    unlink('../' . $video['npo_image']);
+                }
+            } else {
+                $fout = "Fout bij uploaden van thumbnail.";
+            }
+        } else {
+            $fout = "Alleen JPG, PNG, GIF en WebP bestanden zijn toegestaan.";
+        }
+    }
 
     if (empty($titel) || empty($embed_code)) {
         $fout = "Titel en embed-code zijn verplicht.";
     } else {
-        $stmt = $conn->prepare("UPDATE videos SET titel = ?, beschrijving = ?, embed_code = ?, tags = ? WHERE id = ?");
-        $stmt->bind_param("ssssi", $titel, $beschrijving, $embed_code, $tag, $id);
+        $stmt = $conn->prepare("UPDATE videos SET titel = ?, beschrijving = ?, embed_code = ?, tags = ?, npo_image = ? WHERE id = ?");
+        $stmt->bind_param("sssssi", $titel, $beschrijving, $embed_code, $tag, $npo_image, $id);
 
         if ($stmt->execute()) {
             $succes = "Video succesvol bijgewerkt!";
@@ -53,6 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $video['beschrijving'] = $beschrijving;
             $video['embed_code'] = $embed_code;
             $video['tags'] = $tag;
+            $video['npo_image'] = $npo_image;
         } else {
             $fout = "Er ging iets mis: " . $conn->error;
         }
@@ -304,6 +337,44 @@ textarea.form-control {
     border: 1px solid #555;
 }
 
+/* Thumbnail Upload Styling */
+.thumbnail-upload-section {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #555;
+}
+
+.current-thumbnail {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+.thumbnail-preview {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.thumbnail-info {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.form-text {
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: block;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .admin-container {
@@ -359,7 +430,7 @@ textarea.form-control {
         </div>
         <?php endif; ?>
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label class="form-label">Titel *</label>
                 <input type="text" name="titel" class="form-control" 
@@ -380,6 +451,22 @@ textarea.form-control {
                     placeholder="Voer de embed code in (YouTube, Vimeo, etc.)"
                     rows="3" required><?= htmlspecialchars($video['embed_code']) ?></textarea>
             </div>
+
+            <?php if (strpos($video['embed_code'], 'NPO_LINK:') === 0): ?>
+            <div class="form-group">
+                <label class="form-label">NPO Video Thumbnail</label>
+                <div class="thumbnail-upload-section">
+                    <?php if (!empty($video['npo_image'])): ?>
+                    <div class="current-thumbnail">
+                        <img src="../<?= htmlspecialchars($video['npo_image']) ?>" alt="Huidige thumbnail" class="thumbnail-preview">
+                        <p class="thumbnail-info">Huidige thumbnail</p>
+                    </div>
+                    <?php endif; ?>
+                    <input type="file" name="npo_thumbnail" class="form-control" accept="image/*">
+                    <small class="form-text">Upload een afbeelding voor de NPO video thumbnail (JPG, PNG, GIF, WebP). Aanbevolen formaat: 400x225px.</small>
+                </div>
+            </div>
+            <?php endif; ?>
 
             <div class="form-group">
                 <label class="form-label">Categorie *</label>

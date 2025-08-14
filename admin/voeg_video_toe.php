@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $beschrijving = trim($_POST['beschrijving'] ?? '');
     $videolink = trim($_POST['videolink'] ?? '');
     $tag = trim($_POST['tag'] ?? '');
+    $npo_image = '';
 
     if (empty($titel) || empty($beschrijving) || empty($videolink) || empty($tag)) {
         $fout = "Vul alle velden in.";
@@ -46,16 +47,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $tag = preg_replace('/[^a-zA-Z0-9 ]/', '', $tag);
             
-            $stmt = $conn->prepare("INSERT INTO videos (titel, beschrijving, embed_code, tags) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param('ssss', $titel, $beschrijving, $embed_code, $tag);
-
-            if ($stmt->execute()) {
-                header("Location: ../" . strtolower($tag) . ".php");
-                exit;
-            } else {
-                $fout = "Fout bij toevoegen: " . $conn->error;
+            // Verwerk thumbnail upload voor NPO video's
+            if (strpos($embed_code, 'NPO_LINK:') === 0 && isset($_FILES['npo_thumbnail']) && $_FILES['npo_thumbnail']['error'] === UPLOAD_ERR_OK) {
+                $upload_dir = '../uploads/npo_thumbnails/';
+                
+                // Maak upload directory aan als deze niet bestaat
+                if (!is_dir($upload_dir)) {
+                    mkdir($upload_dir, 0755, true);
+                }
+                
+                $file_info = pathinfo($_FILES['npo_thumbnail']['name']);
+                $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                
+                if (in_array(strtolower($file_info['extension']), $allowed_extensions)) {
+                    $new_filename = 'npo_' . time() . '_' . uniqid() . '.' . $file_info['extension'];
+                    $upload_path = $upload_dir . $new_filename;
+                    
+                    if (move_uploaded_file($_FILES['npo_thumbnail']['tmp_name'], $upload_path)) {
+                        $npo_image = 'uploads/npo_thumbnails/' . $new_filename;
+                    } else {
+                        $fout = "Fout bij uploaden van thumbnail.";
+                    }
+                } else {
+                    $fout = "Alleen JPG, PNG, GIF en WebP bestanden zijn toegestaan.";
+                }
             }
-            $stmt->close();
+            
+            if (empty($fout)) {
+                $stmt = $conn->prepare("INSERT INTO videos (titel, beschrijving, embed_code, tags, npo_image) VALUES (?, ?, ?, ?, ?)");
+                $stmt->bind_param('sssss', $titel, $beschrijving, $embed_code, $tag, $npo_image);
+
+                if ($stmt->execute()) {
+                    header("Location: ../" . strtolower($tag) . ".php");
+                    exit;
+                } else {
+                    $fout = "Fout bij toevoegen: " . $conn->error;
+                }
+                $stmt->close();
+            }
         }
     }
 }
@@ -385,7 +414,7 @@ textarea.form-control {
     <!-- Video Form Section -->
     <div class="form-section">
         <h2 class="section-title">Video Informatie</h2>
-        <form method="post" id="videoForm">
+        <form method="post" id="videoForm" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="titel" class="form-label">Titel *</label>
                 <input type="text" name="titel" id="titel" class="form-control" required
@@ -405,6 +434,14 @@ textarea.form-control {
                     value="<?= htmlspecialchars($_POST['videolink'] ?? '') ?>">
                 <small style="color: #888; font-size: 0.8rem; margin-top: 0.5rem; display: block;">
                     Ondersteunde formaten: YouTube, Vimeo, NPO Start
+                </small>
+            </div>
+
+            <div class="form-group" id="thumbnailSection" style="display: none;">
+                <label for="npo_thumbnail" class="form-label">NPO Video Thumbnail</label>
+                <input type="file" name="npo_thumbnail" id="npo_thumbnail" class="form-control" accept="image/*">
+                <small style="color: #888; font-size: 0.8rem; margin-top: 0.5rem; display: block;">
+                    Upload een afbeelding voor de NPO video thumbnail (JPG, PNG, GIF, WebP). Aanbevolen formaat: 400x225px.
                 </small>
             </div>
 
@@ -450,20 +487,26 @@ document.getElementById('videolink').addEventListener('input', function() {
     const link = this.value;
     const preview = document.getElementById('videoPreview');
     const embed = document.getElementById('previewEmbed');
+    const thumbnailSection = document.getElementById('thumbnailSection');
     
     if (link) {
         if (link.includes('youtube.com') || link.includes('youtu.be')) {
             embed.innerHTML = '<i class="fab fa-youtube"></i> YouTube Video';
+            thumbnailSection.style.display = 'none';
         } else if (link.includes('vimeo.com')) {
             embed.innerHTML = '<i class="fab fa-vimeo-v"></i> Vimeo Video';
+            thumbnailSection.style.display = 'none';
         } else if (link.includes('npo.nl') || link.includes('npostart.nl')) {
             embed.innerHTML = '<i class="fas fa-play"></i> NPO Video';
+            thumbnailSection.style.display = 'block';
         } else {
             embed.innerHTML = '<i class="fas fa-question"></i> Onbekend platform';
+            thumbnailSection.style.display = 'none';
         }
         preview.style.display = 'block';
     } else {
         preview.style.display = 'none';
+        thumbnailSection.style.display = 'none';
     }
 });
 

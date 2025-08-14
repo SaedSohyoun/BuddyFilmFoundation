@@ -52,7 +52,7 @@ body {
     color: #ccc;
     font-size: 1.2rem;
     margin: 0;
-    max-width: 600px;
+    max-width: 1100px;
     margin: 0 auto;
     line-height: 1.6;
 }
@@ -196,6 +196,82 @@ body {
     text-decoration: none;
 }
 
+/* NPO Video Thumbnail Styling */
+.npo-video-thumbnail {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.npo-video-thumbnail:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 130, 137, 0.4);
+}
+
+.thumbnail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.npo-video-thumbnail:hover .thumbnail-image {
+    transform: scale(1.05);
+}
+
+.default-thumbnail {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 130, 137, 0.8) 0%, rgba(0, 100, 107, 0.9) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.default-thumbnail i {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.play-overlay i {
+    font-size: 1.5rem;
+    margin-left: 3px;
+}
+
+.npo-video-thumbnail:hover .play-overlay {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
 
 
 .no-video {
@@ -288,7 +364,10 @@ body {
 <div class="page-container">
     <div class="page-header">
         <h1><i class="fas fa-video me-3"></i>Production</h1>
-        <p>Explore our production portfolio featuring professional film projects and creative content.</p>
+        <p>Since 2018, Buddy Film Productions has been making commissioned films for various companies and clients. In
+            recent years we have worked on behalf of, a.o, Vluchtelingenwerk Nederland, Divosa, Sensa Zorg and the
+            Stedelijk Museum Amsterdam. In our productions, we always work together with our participants; in front and
+            behind the camera. The proceeds of the productions benefit the foundation.</p>
     </div>
 
     <div class="container">
@@ -323,10 +402,21 @@ body {
 
                     <?php if (!empty($video['embed_code'])): ?>
                     <?php if (strpos($video['embed_code'], 'NPO_LINK:') === 0):
-                            $npoUrl = substr($video['embed_code'], strlen('NPO_LINK:')); ?>
+                                    $npoUrl = substr($video['embed_code'], strlen('NPO_LINK:')); ?>
                     <a href="<?= htmlspecialchars($npoUrl) ?>" target="_blank" rel="noopener noreferrer"
-                        class="video-link">
-                        <i class="fas fa-play me-2"></i>Watch NPO Video
+                        class="npo-video-thumbnail">
+                        <?php if (!empty($video['npo_image'])): ?>
+                        <img src="<?= htmlspecialchars($video['npo_image']) ?>"
+                            alt="<?= htmlspecialchars($video['titel']) ?>" class="thumbnail-image">
+                        <?php else: ?>
+                        <div class="default-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Watch NPO Video</span>
+                        </div>
+                        <?php endif; ?>
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
                     </a>
                     <?php else: ?>
                     <div class="video-embed"><?= $video['embed_code'] ?></div>

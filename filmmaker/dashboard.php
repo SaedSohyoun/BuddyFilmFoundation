@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload_foto'])) {
 }
 
 // Profielgegevens ophalen
-$stmtProfile = $conn->prepare("SELECT naam, story, werkervaring, profielfoto, email, telefoon, stad FROM gebruikers WHERE gebruikersnaam = ?");
+$stmtProfile = $conn->prepare("SELECT naam, story, werkervaring, profielfoto, email, telefoon, stad, portfolio_status, portfolio_moderatie_datum, portfolio_moderatie_opmerking, portfolio_laatste_wijziging FROM gebruikers WHERE gebruikersnaam = ?");
 $stmtProfile->bind_param("s", $user);
 $stmtProfile->execute();
 $profileResult = $stmtProfile->get_result();
@@ -95,11 +95,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profiel'])) {
     $werkervaring = trim($_POST['werkervaring'] ?? '');
     $stad = trim($_POST['stad'] ?? '');
 
-    $stmt = $conn->prepare("UPDATE gebruikers SET story = ?, werkervaring = ?, stad = ? WHERE gebruikersnaam = ?");
+    // Update profiel en zet status op 'pending' voor moderatie
+    $stmt = $conn->prepare("UPDATE gebruikers SET story = ?, werkervaring = ?, stad = ?, portfolio_status = 'pending', portfolio_laatste_wijziging = CURRENT_TIMESTAMP WHERE gebruikersnaam = ?");
     $stmt->bind_param("ssss", $story, $werkervaring, $stad, $user);
     if ($stmt->execute()) {
-        header("Location: dashboard.php");
-        exit;
+        $succes = "Profiel bijgewerkt en ter moderatie ingediend. Een admin zal je wijzigingen controleren.";
     } else {
         $fout = "Fout bij bijwerken profiel.";
     }
@@ -425,6 +425,45 @@ textarea.form-control {
             <p class="page-subtitle">Welkom terug, <?= esc($profile['naam'] ?? $user) ?></p>
         </div>
     </div>
+
+    <!-- Portfolio Status Indicator -->
+    <?php if (isset($profile['portfolio_status'])): ?>
+        <?php
+        $statusColors = [
+            'pending' => 'warning',
+            'approved' => 'success', 
+            'rejected' => 'danger'
+        ];
+        $statusMessages = [
+            'pending' => 'Je portfolio wijzigingen wachten op goedkeuring van een admin.',
+            'approved' => 'Je portfolio is goedgekeurd en zichtbaar voor bezoekers.',
+            'rejected' => 'Je portfolio wijzigingen zijn afgewezen. Bekijk de opmerkingen hieronder.'
+        ];
+        $statusIcons = [
+            'pending' => 'clock',
+            'approved' => 'check-circle',
+            'rejected' => 'times-circle'
+        ];
+        $status = $profile['portfolio_status'];
+        $color = $statusColors[$status] ?? 'info';
+        $message = $statusMessages[$status] ?? '';
+        $icon = $statusIcons[$status] ?? 'info-circle';
+        ?>
+        <div class="alert alert-<?= $color ?>">
+            <i class="fas fa-<?= $icon ?>"></i> 
+            <strong>Portfolio Status: <?= ucfirst($status) ?></strong><br>
+            <?= $message ?>
+            
+            <?php if ($status === 'rejected' && !empty($profile['portfolio_moderatie_opmerking'])): ?>
+                <br><br><strong>Opmerking van admin:</strong><br>
+                <?= esc($profile['portfolio_moderatie_opmerking']) ?>
+            <?php endif; ?>
+            
+            <?php if ($status === 'pending' && !empty($profile['portfolio_laatste_wijziging'])): ?>
+                <br><small>Ingediend op: <?= date('d-m-Y H:i', strtotime($profile['portfolio_laatste_wijziging'])) ?></small>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
 
     <?php if ($fout): ?>
     <div class="alert alert-danger">
