@@ -101,6 +101,9 @@ if ($is_admin || $is_filmmaker) {
                             <a class="nav-link" href="<?= $base_path ?>production.php">Production</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="<?= $base_path ?>find_professional.php">Find a Professional</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="<?= $base_path ?>donate.php"
                                 style="color: rgba(0, 130, 137, 1) !important;">Donate</a>
                         </li>
