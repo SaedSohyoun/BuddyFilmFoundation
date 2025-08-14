@@ -1461,22 +1461,45 @@ body {
 
             <div class="contact-form">
                 <h2>Do you have a question?</h2>
-                <form>
+                
+                <?php if (isset($_GET['contact']) && $_GET['contact'] === 'success'): ?>
+                <div class="alert alert-success" style="background-color: rgba(40, 167, 69, 0.1); border: 1px solid rgba(40, 167, 69, 0.5); color: #51cf66; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <strong>Bedankt!</strong> Je bericht is succesvol verzonden. We nemen zo snel mogelijk contact met je op.
+                </div>
+                <?php endif; ?>
+                
+                <?php if (isset($_GET['contact']) && $_GET['contact'] === 'error' && isset($_SESSION['contact_errors'])): ?>
+                <div class="alert alert-danger" style="background-color: rgba(220, 53, 69, 0.1); border: 1px solid rgba(220, 53, 69, 0.5); color: #ff6b6b; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <strong>Er zijn fouten opgetreden:</strong><br>
+                    <?php foreach ($_SESSION['contact_errors'] as $error): ?>
+                        • <?= htmlspecialchars($error) ?><br>
+                    <?php endforeach; ?>
+                </div>
+                <?php 
+                    // Verwijder de sessie data na het tonen
+                    unset($_SESSION['contact_errors']);
+                    unset($_SESSION['contact_data']);
+                endif; ?>
+                
+                <form method="post" action="process_contact.php">
                     <div class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name">
+                        <label for="name" class="form-label">Name *</label>
+                        <input type="text" class="form-control" id="name" name="name" required 
+                               value="<?= htmlspecialchars($_SESSION['contact_data']['name'] ?? '') ?>">
                     </div>
                     <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email">
+                        <label for="email" class="form-label">Email *</label>
+                        <input type="email" class="form-control" id="email" name="email" required 
+                               value="<?= htmlspecialchars($_SESSION['contact_data']['email'] ?? '') ?>">
                     </div>
                     <div class="form-group">
-                        <label for="subject" class="form-label">Subject</label>
-                        <input type="text" class="form-control" id="subject">
+                        <label for="subject" class="form-label">Subject *</label>
+                        <input type="text" class="form-control" id="subject" name="subject" required 
+                               value="<?= htmlspecialchars($_SESSION['contact_data']['subject'] ?? '') ?>">
                     </div>
                     <div class="form-group">
-                        <label for="message" class="form-label">Your message</label>
-                        <textarea class="form-control" id="message" rows="5"></textarea>
+                        <label for="message" class="form-label">Your message *</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" required><?= htmlspecialchars($_SESSION['contact_data']['message'] ?? '') ?></textarea>
                     </div>
                     <button type="submit" class="submit-btn">SUBMIT</button>
                 </form>

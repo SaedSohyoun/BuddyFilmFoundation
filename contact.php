@@ -1,48 +1,13 @@
 <?php
 include 'inc/header.php';
 
+// Toon succes/error berichten van process_contact.php
 $fout = $succes = "";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $naam = trim($_POST['naam'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $bericht = trim($_POST['bericht'] ?? '');
-
-    if (!$naam || !$email || !$bericht) {
-        $fout = "Vul alle velden in.";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $fout = "Ongeldig e-mailadres.";
-    } else {
-        $to = "info@buddyfilmfoundation.com";
-        $subject = "Nieuw bericht via contactformulier - Buddy Film Foundation";
-        $body = "Je hebt een nieuw bericht ontvangen via het contactformulier op buddyfilmfoundation.com\n\n"
-              . "Naam: $naam\n"
-              . "Email: $email\n\n"
-              . "Bericht:\n$bericht\n";
-
-        $headers = "From: no-reply@buddyfilmfoundation.com\r\n";
-        $headers .= "Reply-To: " . filter_var($email, FILTER_SANITIZE_EMAIL) . "\r\n";
-        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-
-        // Voor lokale ontwikkeling - sla het bericht op in een bestand
-        if (php_sapi_name() === 'cli' || strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false) {
-            // Lokale omgeving - sla op in bestand
-            $log_entry = date('Y-m-d H:i:s') . " - " . $naam . " (" . $email . "): " . $bericht . "\n";
-            $log_file = 'contact_messages.txt';
-            if (file_put_contents($log_file, $log_entry, FILE_APPEND | LOCK_EX)) {
-                $succes = "Bericht verzonden! We nemen zo snel mogelijk contact met je op.";
-            } else {
-                $fout = "Fout bij verzenden, probeer later opnieuw.";
-            }
-        } else {
-            // Productie omgeving - gebruik mail() functie
-            if (mail($to, $subject, $body, $headers)) {
-                $succes = "Bericht verzonden! We nemen zo snel mogelijk contact met je op.";
-            } else {
-                $fout = "Fout bij verzenden, probeer later opnieuw.";
-            }
-        }
-    }
+if (isset($_GET['contact']) && $_GET['contact'] === 'success') {
+    $succes = "Bericht verzonden! We nemen zo snel mogelijk contact met je op.";
+} elseif (isset($_GET['contact']) && $_GET['contact'] === 'error') {
+    $fout = "Er is een fout opgetreden bij het versturen van het bericht. Probeer het later opnieuw.";
 }
 ?>
 
@@ -183,10 +148,10 @@ body {
     color: #ccc;
 }
 
-.form-floating input:focus ~ label,
-.form-floating input:not(:placeholder-shown) ~ label,
-.form-floating textarea:focus ~ label,
-.form-floating textarea:not(:placeholder-shown) ~ label {
+.form-floating input:focus~label,
+.form-floating input:not(:placeholder-shown)~label,
+.form-floating textarea:focus~label,
+.form-floating textarea:not(:placeholder-shown)~label {
     opacity: .65;
     transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
 }
@@ -240,7 +205,7 @@ body {
         padding: 2rem;
         margin: 1rem;
     }
-    
+
     .contact-header h1 {
         font-size: 2rem;
     }
@@ -256,7 +221,8 @@ body {
 
         <div class="contact-info">
             <h3><i class="fas fa-info-circle me-2"></i>Contact Information</h3>
-            <p><i class="fas fa-envelope me-2"></i><a href="mailto:info@buddyfilmfoundation.com">info@buddyfilmfoundation.com</a></p>
+            <p><i class="fas fa-envelope me-2"></i><a
+                    href="mailto:info@buddyfilmfoundation.com">info@buddyfilmfoundation.com</a></p>
             <p><i class="fas fa-phone me-2"></i>+31 6 27459194</p>
             <p><i class="fas fa-clock me-2"></i>Mon, Tue, Thu: 10:00-18:00</p>
         </div>
@@ -275,23 +241,29 @@ body {
         </div>
         <?php endif; ?>
 
-        <form method="post" action="">
+        <form method="post" action="process_contact.php">
             <div class="form-floating">
-                <input type="text" name="naam" id="naam" class="form-control" 
-                       placeholder="Your Name" required value="<?= htmlspecialchars($_POST['naam'] ?? '') ?>">
-                <label for="naam">Your Name</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required
+                    value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
+                <label for="name">Your Name</label>
             </div>
 
             <div class="form-floating">
-                <input type="email" name="email" id="email" class="form-control" 
-                       placeholder="Your Email" required value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
+                <input type="email" name="email" id="email" class="form-control" placeholder="Your Email" required
+                    value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
                 <label for="email">Your Email</label>
             </div>
 
             <div class="form-floating">
-                <textarea name="bericht" id="bericht" class="form-control" 
-                          placeholder="Your Message" required><?= htmlspecialchars($_POST['bericht'] ?? '') ?></textarea>
-                <label for="bericht">Your Message</label>
+                <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject" required
+                    value="<?= htmlspecialchars($_POST['subject'] ?? '') ?>">
+                <label for="subject">Subject</label>
+            </div>
+
+            <div class="form-floating">
+                <textarea name="message" id="message" class="form-control" placeholder="Your Message"
+                    required><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
+                <label for="message">Your Message</label>
             </div>
 
             <button type="submit" class="btn btn-contact">

@@ -366,6 +366,22 @@ body {
             <span class="card-action">Beheer team</span>
         </a>
 
+        <a href="contact_berichten.php" class="dashboard-card card-info">
+            <span class="card-icon">📧</span>
+            <h3 class="card-title">Contact Berichten</h3>
+            <p class="card-description">Bekijk en beheer alle berichten die via het contactformulier zijn verzonden.
+            </p>
+            <span class="card-action">Bekijk berichten</span>
+        </a>
+
+        <a href="email_bestanden.php" class="dashboard-card card-warning">
+            <span class="card-icon">📁</span>
+            <h3 class="card-title">E-mail Bestanden</h3>
+            <p class="card-description">Bekijk e-mail bestanden die lokaal zijn opgeslagen tijdens ontwikkeling.
+            </p>
+            <span class="card-action">Bekijk bestanden</span>
+        </a>
+
         <a href="admin_statistieken.php" class="dashboard-card card-info">
             <span class="card-icon">📊</span>
             <h3 class="card-title">Statistieken & Analytics</h3>
