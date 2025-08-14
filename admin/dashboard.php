@@ -358,6 +358,14 @@ body {
             <span class="card-action">Modereer portfolios</span>
         </a>
 
+        <a href="teambeheer.php" class="dashboard-card card-primary">
+            <span class="card-icon">👥</span>
+            <h3 class="card-title">Teambeheer</h3>
+            <p class="card-description">Beheer teamleden, voeg nieuwe leden toe, bewerk profielen en verwijder leden.
+            </p>
+            <span class="card-action">Beheer team</span>
+        </a>
+
         <a href="admin_statistieken.php" class="dashboard-card card-info">
             <span class="card-icon">📊</span>
             <h3 class="card-title">Statistieken & Analytics</h3>

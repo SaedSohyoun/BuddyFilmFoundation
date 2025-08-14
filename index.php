@@ -1165,12 +1165,6 @@ body {
                     national and international film and tv-industry. </p>
             </div>
         </div>
-
-        <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
-        <div class="beheer-knop">
-            <a href="admin/teambeheer.php" class="btn btn-outline-primary">Beheer Teamleden (Admin)</a>
-        </div>
-        <?php endif; ?>
     </div>
     <br>
     <!-- Who We Are Section -->
@@ -1309,6 +1303,12 @@ body {
             </div>
             <?php endwhile; ?>
         </div>
+        
+        <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
+        <div class="beheer-knop" style="text-align: center; margin-top: 2rem;">
+            <a href="admin/teambeheer.php" class="btn btn-outline-primary">Beheer Teamleden (Admin)</a>
+        </div>
+        <?php endif; ?>
     </div>
 
     <!-- Hero Slider Section -->
