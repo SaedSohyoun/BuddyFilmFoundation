@@ -85,51 +85,54 @@ if ($is_admin || $is_filmmaker) {
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $base_path ?>index.php"
-                                style="color: rgba(0, 130, 137, 1) !important;">Home</a>
+                                style="color: rgba(0, 130, 137, 1) !important;">HOME</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $base_path ?>filmmakers.php"
-                                style="color: rgba(0, 130, 137, 1) !important;">Portfolios</a>
+                                style="color: rgba(0, 130, 137, 1) !important;">PORTFOLIOS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $base_path ?>foundation.php">Foundation</a>
+                            <a class="nav-link" href="<?= $base_path ?>foundation.php">FOUNDATION</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $base_path ?>casting.php">Casting</a>
+                            <a class="nav-link" href="<?= $base_path ?>casting.php">CASTING</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $base_path ?>production.php">Production</a>
+                            <a class="nav-link" href="<?= $base_path ?>production.php">PRODUCTION</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $base_path ?>find_professional.php">Find a Professional</a>
+                            <a class="nav-link" href="<?= $base_path ?>in_development.php">IN DEVELOPMENT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $base_path ?>find_professional.php">FIND A PROFESSIONAL</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $base_path ?>donate.php"
-                                style="color: rgba(0, 130, 137, 1) !important;">Donate</a>
+                                style="color: rgba(0, 130, 137, 1) !important;">DONATE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $base_path ?>contact.php">Contact</a>
+                            <a class="nav-link" href="<?= $base_path ?>contact.php">CONTACT</a>
                         </li>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="<?= $is_admin ? $dashboard_path : 'admin/dashboard.php' ?>">Admin</a>
+                                href="<?= $is_admin ? $dashboard_path : 'admin/dashboard.php' ?>">ADMIN</a>
                         </li>
                         <?php elseif (isset($_SESSION['rol']) && $_SESSION['rol'] === 'filmmaker'): ?>
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="<?= $is_filmmaker ? $dashboard_path : 'filmmaker/dashboard.php' ?>">Mijn
-                                Portfolio</a>
+                                href="<?= $is_filmmaker ? $dashboard_path : 'filmmaker/dashboard.php' ?>">MIJN
+                                PORTFOLIO</a>
                         </li>
                         <?php endif; ?>
                         <?php if (isset($_SESSION['gebruikersnaam'])): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $base_path ?>logout.php">Uitloggen
+                            <a class="nav-link" href="<?= $base_path ?>logout.php">UITLOGGEN
                                 (<?= htmlspecialchars($_SESSION['gebruikersnaam']) ?>)</a>
                         </li>
                         <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $base_path ?>login.php">Login</a>
+                            <a class="nav-link" href="<?= $base_path ?>login.php">LOGIN</a>
                         </li>
                         <?php endif; ?>
                     </ul>
