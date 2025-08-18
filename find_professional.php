@@ -287,350 +287,399 @@ body {
 
     <!-- Row 3 -->
     <div class="professional-card">
-        <img src="uploads/prof/default-profile.jpg" alt="Professional 11" class="card-image">
+        <img src="uploads/prof/Omar-Mohammad.jpg" alt="Omar Mohammad" class="card-image">
         <div class="card-content">
-            <h3>Professional 11</h3>
-            <p class="skills">Actor • Voice Over</p>
+            <h3>Omar Mohammad</h3>
+            <p class="skills">• Screen Writer</p>
+            <p class="skills">• Actor</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/prof/default-profile.jpg" alt="Professional 12" class="card-image">
+        <img src="uploads/prof/Amin-Talaei.jpg" alt="Amin Talaei" class="card-image">
         <div class="card-content">
-            <h3>Professional 12</h3>
-            <p class="skills">Editor • Post Production</p>
+            <h3>Amin Talaei</h3>
+            <p class="skills">• Cameraman</p>
+            <p class="skills">• Lights Assistant</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/prof/default-profile.jpg" alt="Professional 13" class="card-image">
+        <img src="uploads/prof/Nour-Mardini.jpg" alt="Nour Mardini" class="card-image">
         <div class="card-content">
-            <h3>Professional 13</h3>
-            <p class="skills">Cinematographer • DOP</p>
+            <h3>Nour Mardini</h3>
+            <p class="skills">• Actor</p>
+            <p class="skills">• Director</p>
+            <p class="skills">• Musician</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/prof/default-profile.jpg" alt="Professional 14" class="card-image">
+        <img src="uploads/prof/Maen-Sawwan.jpg" alt="Maen Sawwan" class="card-image">
         <div class="card-content">
-            <h3>Professional 14</h3>
-            <p class="skills">Makeup Artist • Special Effects</p>
+            <h3>Maen Sawwan</h3>
+            <p class="skills">• 3D Generalist</p>
+            <p class="skills">• 2D Motion Designer</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/prof/default-profile.jpg" alt="Professional 15" class="card-image">
+        <img src="uploads/prof/Elham-Ghoreishi.jpg" alt="Elham Ghoreishi" class="card-image">
         <div class="card-content">
-            <h3>Professional 15</h3>
-            <p class="skills">Costume Designer • Wardrobe</p>
+            <h3>Elham Ghoreishi</h3>
+            <p class="skills">• Writer</p>
+            <p class="skills">• Painter</p>
+            <p class="skills">• Actress</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <!-- Row 4 -->
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 16" class="card-image">
+        <img src="uploads/prof/Alaa-Shehada.jpg" alt="Alaa Shehada" class="card-image">
         <div class="card-content">
-            <h3>Professional 16</h3>
-            <p class="skills">Set Designer • Art Director</p>
+            <h3>Alaa Shehada</h3>
+            <p class="skills">• Actor</p>
+            <p class="skills">• Theater Maker</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 17" class="card-image">
+        <img src="uploads/prof/Slava-Garmash.jpg" alt="Slava Garmash" class="card-image">
         <div class="card-content">
-            <h3>Professional 17</h3>
-            <p class="skills">Sound Designer • Mixer</p>
+            <h3>Slava Garmash</h3>
+            <p class="skills">• Director</p>
+            <p class="skills">• Producer</p>
+            <p class="skills">• Writer</p>
+            <p class="skills">• TV host</p>
+            <p class="skills">• Journalist</p>
+            <p class="skills">• Teacher</p>
+
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 18" class="card-image">
+        <img src="uploads/prof/Thaeer-Muhreez.jpg" alt="Thaeer Muhreez" class="card-image">
         <div class="card-content">
-            <h3>Professional 18</h3>
-            <p class="skills">Grip • Electrician</p>
+            <h3>Thaeer Muhreez</h3>
+            <p class="skills">• Filmmaker</p>
+            <p class="skills">• Content Creator</p>
+
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 19" class="card-image">
+        <img src="uploads/prof/Saeed-Alhammad.jpg" alt="Saeed Alhammad" class="card-image">
         <div class="card-content">
-            <h3>Professional 19</h3>
-            <p class="skills">Location Manager • Scout</p>
+            <h3>Saeed Alhammad</h3>
+            <p class="skills">• Director of Photography</p>
+            <p class="skills">• Photographer</p>
+
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 20" class="card-image">
+        <img src="uploads/prof/Filmon-Kiros.jpg" alt="Filmon Kiros" class="card-image">
         <div class="card-content">
-            <h3>Professional 20</h3>
-            <p class="skills">Casting Director • Agent</p>
+            <h3>Filmon Kiros</h3>
+            <p class="skills">• Writer</p>
+            <p class="skills">• Director</p>
+            <p class="skills">• Camera Assistant</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <!-- Row 5 -->
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 21" class="card-image">
+        <img src="uploads/prof/Kimo-Kamiran-Sindi.jpg" alt="Kimo Kamiran Sindi" class="card-image">
         <div class="card-content">
-            <h3>Professional 21</h3>
-            <p class="skills">Stunt Coordinator • Performer</p>
+            <h3>Kimo Kamiran Sindi</h3>
+            <p class="skills">• Camera Operator</p>
+            <p class="skills">• Editor</p>
+
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 22" class="card-image">
+        <img src="uploads/prof/Eugene-Kuzmenko.jpg" alt="Eugene Kuzmenko" class="card-image">
         <div class="card-content">
-            <h3>Professional 22</h3>
-            <p class="skills">Colorist • Grading</p>
+            <h3>Eugene Kuzmenko</h3>
+            <p class="skills">• Camera Operator</p>
+            <p class="skills">• Lightening</p>
+            <p class="skills">• Editor</p>
+            <p class="skills">• Recording</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 23" class="card-image">
+        <img src="uploads/prof/Frere-Remi.jpg" alt="Frere Remi" class="card-image">
         <div class="card-content">
-            <h3>Professional 23</h3>
-            <p class="skills">VFX Artist • Compositor</p>
+            <h3>Frere Remi</h3>
+            <p class="skills">• Singer</p>
+            <p class="skills">• Song-writer</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 24" class="card-image">
+        <img src="uploads/prof/Yazan-Al-Hakim.jpg" alt="Yazan Al Hakim" class="card-image">
         <div class="card-content">
-            <h3>Professional 24</h3>
-            <p class="skills">Animator • Motion Graphics</p>
+            <h3>Yazan Al Hakim</h3>
+            <p class="skills">• Actor</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 25" class="card-image">
+        <img src="uploads/prof/Kabir-Tarak.jpg" alt="Kabir Tarak" class="card-image">
         <div class="card-content">
-            <h3>Professional 25</h3>
-            <p class="skills">Production Manager • Line Producer</p>
+            <h3>Kabir Tarak</h3>
+            <p class="skills">• Actor</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <!-- Row 6 -->
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 26" class="card-image">
+        <img src="uploads/prof/Tarek-Al-Muazen.jpg" alt="Tarek Al Muazen" class="card-image">
         <div class="card-content">
-            <h3>Professional 26</h3>
-            <p class="skills">Assistant Director • AD</p>
+            <h3>Tarek Al Muazen</h3>
+            <p class="skills">• Editor</p>
+            <p class="skills">• Sound Designer</p>
+            <p class="skills">• Music Producer</p>
+            <p class="skills">• Live Musician</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 27" class="card-image">
+        <img src="uploads/prof/Milena-Kompaniiets.jpg" alt="Milena Kompaniiets" class="card-image">
         <div class="card-content">
-            <h3>Professional 27</h3>
-            <p class="skills">Script Supervisor • Continuity</p>
+            <h3>Milena Kompaniiets</h3>
+            <p class="skills">• Actress</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 28" class="card-image">
+        <img src="uploads/prof/Zanyar-Mohammadi.jpg" alt="Zanyar Mohammadi" class="card-image">
         <div class="card-content">
-            <h3>Professional 28</h3>
-            <p class="skills">Boom Operator • Audio</p>
+            <h3>Zanyar Mohammadi</h3>
+            <p class="skills">• Actor</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 29" class="card-image">
+        <img src="uploads/prof/Ahmed-AlAmoudi.jpg" alt="Ahmed AlAmoudi" class="card-image">
         <div class="card-content">
-            <h3>Professional 29</h3>
-            <p class="skills">Key Grip • Rigging</p>
+            <h3>Ahmed AlAmoudi</h3>
+            <p class="skills">• Director of Photography</p>
+            <p class="skills">• Camera Operator</p>
+            <p class="skills">• 1st & 2nd Assistant Camera</p>
+            <p class="skills">• Lighting Technician</p>
+            <p class="skills">• Gripper</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 30" class="card-image">
+        <img src="uploads/prof/Said-Rasouli.jpg" alt="Said Rasouli" class="card-image">
         <div class="card-content">
-            <h3>Professional 30</h3>
-            <p class="skills">Best Boy • Electric</p>
+            <h3>Said Rasouli</h3>
+            <p class="skills">• Photographer</p>
+            <p class="skills">• Videographer</p>
+            <p class="skills">• Actor</p>
+
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <!-- Row 7 -->
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 31" class="card-image">
+        <img src="uploads/prof/Koorosh-Cyrus-Esfandiari.jpg" alt="Koorosh Cyrus Esfandiari" class="card-image">
         <div class="card-content">
-            <h3>Professional 31</h3>
-            <p class="skills">Props Master • Set Dressing</p>
+            <h3>Koorosh Cyrus Esfandiari</h3>
+            <p class="skills">• Actor</p>
+            <p class="skills">• Writer</p>
+            <p class="skills">• Director</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 32" class="card-image">
+        <img src="uploads/prof/Sally-Jabour.jpg" alt="Sally Jabour" class="card-image">
         <div class="card-content">
-            <h3>Professional 32</h3>
-            <p class="skills">Hair Stylist • Wigs</p>
+            <h3>Sally Jabour</h3>
+            <p class="skills">• Actress</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 33" class="card-image">
+        <img src="uploads/prof/Ramez-Basheer.jpg" alt="Ramez Basheer" class="card-image">
         <div class="card-content">
-            <h3>Professional 33</h3>
-            <p class="skills">Wardrobe Assistant • Costumes</p>
+            <h3>Ramez Basheer</h3>
+            <p class="skills">• Actor</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 34" class="card-image">
+        <img src="uploads/prof/Meysam-Forooz.jpg" alt="Meysam Forooz" class="card-image">
         <div class="card-content">
-            <h3>Professional 34</h3>
-            <p class="skills">Transportation • Driver</p>
+            <h3>Meysam Forooz</h3>
+            <p class="skills">• Actor</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 35" class="card-image">
+        <img src="uploads/prof/Alka-Sadat.jpg" alt="Alka Sadat" class="card-image">
         <div class="card-content">
-            <h3>Professional 35</h3>
-            <p class="skills">Catering • Craft Services</p>
+            <h3>Alka Sadat</h3>
+            <p class="skills">• Filmmaker</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <!-- Row 8 -->
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 36" class="card-image">
+        <img src="uploads/prof/Amani-Al-Omaisi.jpg" alt="Amani Al-Omaisi" class="card-image">
         <div class="card-content">
-            <h3>Professional 36</h3>
-            <p class="skills">Security • Set Protection</p>
+            <h3>Amani Al-Omaisi</h3>
+            <p class="skills">• Photographer</p>
+            <p class="skills">• Director Assistant</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 37" class="card-image">
+        <img src="uploads/prof/Ziyod-Yunus.jpg" alt="Ziyod Yunus" class="card-image">
         <div class="card-content">
-            <h3>Professional 37</h3>
-            <p class="skills">Medical • First Aid</p>
+            <h3>Ziyod Yunus</h3>
+            <p class="skills">• Artist</p>
+            <p class="skills">• Actor</p>
+            <p class="skills">• Dancer</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 38" class="card-image">
+        <img src="uploads/prof/Foad-Dehqanpour.jpg" alt="Foad Dehqanpour" class="card-image">
         <div class="card-content">
-            <h3>Professional 38</h3>
-            <p class="skills">Still Photographer • BTS</p>
+            <h3>Foad Dehqanpour</h3>
+            <p class="skills">• Writer</p>
+            <p class="skills">• Film Producer</p>
+            <p class="skills">• Graphic Designer</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 39" class="card-image">
+        <img src="uploads/prof/Somar-Jalbout.jpg" alt="Somar Jalbout" class="card-image">
         <div class="card-content">
-            <h3>Professional 39</h3>
-            <p class="skills">Drone Pilot • Aerial</p>
+            <h3>Somar Jalbout</h3>
+            <p class="skills">• Actor</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 40" class="card-image">
+        <img src="uploads/prof/Mohamed-Al-Tayeb.jpg" alt="Mohamed Al Tayeb" class="card-image">
         <div class="card-content">
-            <h3>Professional 40</h3>
-            <p class="skills">Steadicam Operator • Stabilization</p>
+            <h3>Mohamed Al Tayeb</h3>
+            <p class="skills">• Musician</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <!-- Row 9 -->
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 41" class="card-image">
+        <img src="uploads/prof/Mohammad-Qahees.jpg" alt="Mohammad Qahees" class="card-image">
         <div class="card-content">
-            <h3>Professional 41</h3>
-            <p class="skills">DIT • Digital Imaging</p>
+            <h3>Mohammad Qahees</h3>
+            <p class="skills">• Photographer</p>
+            <p class="skills">• Videographer</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 42" class="card-image">
+        <img src="uploads/prof/Yamen-Khalil.jpg" alt="Yamen Khalil" class="card-image">
         <div class="card-content">
-            <h3>Professional 42</h3>
-            <p class="skills">Data Manager • Media</p>
+            <h3>Yamen Khalil</h3>
+            <p class="skills">• Filmmaker</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 43" class="card-image">
+        <img src="uploads/prof/Mohammad-Turkawi.jpg" alt="Mohammad Turkawi" class="card-image">
         <div class="card-content">
-            <h3>Professional 43</h3>
-            <p class="skills">Loader • Camera Assistant</p>
+            <h3>Mohammad Turkawi</h3>
+            <p class="skills">• Film Director</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 44" class="card-image">
+        <img src="uploads/prof/Elena-Rechych.jpg" alt="Elena Rechych" class="card-image">
         <div class="card-content">
-            <h3>Professional 44</h3>
-            <p class="skills">Focus Puller • 1st AC</p>
+            <h3>Elena Rechych</h3>
+            <p class="skills">• Actress</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 45" class="card-image">
+        <img src="uploads/prof/Aleksandra-Pershay.jpg" alt="Aleksandra Pershay" class="card-image">
         <div class="card-content">
-            <h3>Professional 45</h3>
-            <p class="skills">2nd AC • Clapper</p>
+            <h3>Aleksandra Pershay</h3>
+            <p class="skills">• Stage and Costume Designer</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <!-- Row 10 -->
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 46" class="card-image">
+        <img src="uploads/prof/Leili-Khodae.jpg" alt="Leili Khodae" class="card-image">
         <div class="card-content">
-            <h3>Professional 46</h3>
-            <p class="skills">Trainee • Intern</p>
+            <h3>Leili Khodae</h3>
+            <p class="skills">• Film Director</p>
+            <p class="skills">• Writer</p>
+            <p class="skills">• Poet</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 47" class="card-image">
+        <img src="uploads/prof/Parviz-Baveh.jpg" alt="Parviz Baveh" class="card-image">
         <div class="card-content">
-            <h3>Professional 47</h3>
-            <p class="skills">Runner • PA</p>
+            <h3>Parviz Baveh</h3>
+            <p class="skills">• Actor</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 48" class="card-image">
+        <img src="uploads/prof/Mustafa-Staiti.jpg" alt="Mustafa Staiti" class="card-image">
         <div class="card-content">
-            <h3>Professional 48</h3>
-            <p class="skills">Extra • Background</p>
+            <h3>Mustafa Staiti</h3>
+            <p class="skills">• Director</p>
+            <p class="skills">• Public Speaker</p>
+            <p class="skills">• Editor</p>
+            <p class="skills">• Cameraman</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
