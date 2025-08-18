@@ -75,7 +75,7 @@ body {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 55%;
 }
 
 .card-content h3 {
@@ -94,8 +94,9 @@ body {
 }
 
 .skills-container {
-    flex: 1;
     margin-bottom: 1rem;
+    flex-grow: 1;
+    min-height: 0;
 }
 
 .details-btn {
@@ -108,6 +109,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     width: 100%;
+    flex-shrink: 0;
 }
 
 .details-btn:hover {
@@ -225,59 +227,67 @@ body {
 
     <!-- Row 2 -->
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 6" class="card-image">
+        <img src="uploads/prof/samer-abdul-fattah.jpg" alt="Samer Abdul Fattah" class="card-image">
         <div class="card-content">
-            <h3>Professional 6</h3>
+            <h3>Samer Abdul Fattah</h3>
             <div class="skills-container">
-                <p class="skills">• Camera Operator</p>
-                <p class="skills">• Director</p>
+                <p class="skills">• Screen Writer</p>
+                <p class="skills">• Actor</p>
             </div>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 7" class="card-image">
+        <img src="uploads/prof/julie-nakzi.jpg" alt="Julie Nakzi" class="card-image">
         <div class="card-content">
-            <h3>Professional 7</h3>
+            <h3>Julie Nakzi</h3>
             <div class="skills-container">
-                <p class="skills">• Sound Engineer</p>
-                <p class="skills">• Producer</p>
+                <p class="skills">• Photographer</p>
+                <p class="skills">• Filmmaker</p>
             </div>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 8" class="card-image">
+        <img src="uploads/prof/Shaba-Namdar.jpg" alt="Shaba Namdar" class="card-image">
         <div class="card-content">
-            <h3>Professional 8</h3>
-            <p class="skills">Lighting Technician • Gaffer</p>
+            <h3>Shaba Namdar</h3>
+            <p class="skills">• Screenwriter</p>
+            <p class="skills">• Director</p>
+            <p class="skills">• Editor</p>
+            <p class="skills">• Actor • Animator</p>
+            <p class="skills">• Music maker</p>
+
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 9" class="card-image">
+        <img src="uploads/prof/Reza-Golestani.jpg" alt="Reza Golestani" class="card-image">
         <div class="card-content">
-            <h3>Professional 9</h3>
-            <p class="skills">Script Writer • Screenwriter</p>
+            <h3>Reza Golestani</h3>
+            <p class="skills">• Writer</p>
+            <p class="skills">• Director</p>
+            <p class="skills">• Actor</p>
+            <p class="skills">• Editor</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 10" class="card-image">
+        <img src="uploads/prof/Maya-Jaber.jpg" alt="Maya Jaber" class="card-image">
         <div class="card-content">
-            <h3>Professional 10</h3>
-            <p class="skills">Production Assistant • Coordinator</p>
+            <h3>Maya Jaber</h3>
+            <p class="skills">• Actress</p>
             <button class="details-btn">More details</button>
         </div>
     </div>
 
     <!-- Row 3 -->
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 11" class="card-image">
+        <img src="uploads/prof/default-profile.jpg" alt="Professional 11" class="card-image">
         <div class="card-content">
             <h3>Professional 11</h3>
             <p class="skills">Actor • Voice Over</p>
@@ -286,7 +296,7 @@ body {
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 12" class="card-image">
+        <img src="uploads/prof/default-profile.jpg" alt="Professional 12" class="card-image">
         <div class="card-content">
             <h3>Professional 12</h3>
             <p class="skills">Editor • Post Production</p>
@@ -295,7 +305,7 @@ body {
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 13" class="card-image">
+        <img src="uploads/prof/default-profile.jpg" alt="Professional 13" class="card-image">
         <div class="card-content">
             <h3>Professional 13</h3>
             <p class="skills">Cinematographer • DOP</p>
@@ -304,7 +314,7 @@ body {
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 14" class="card-image">
+        <img src="uploads/prof/default-profile.jpg" alt="Professional 14" class="card-image">
         <div class="card-content">
             <h3>Professional 14</h3>
             <p class="skills">Makeup Artist • Special Effects</p>
@@ -313,7 +323,7 @@ body {
     </div>
 
     <div class="professional-card">
-        <img src="uploads/profielfotos/default-profile.jpg" alt="Professional 15" class="card-image">
+        <img src="uploads/prof/default-profile.jpg" alt="Professional 15" class="card-image">
         <div class="card-content">
             <h3>Professional 15</h3>
             <p class="skills">Costume Designer • Wardrobe</p>
