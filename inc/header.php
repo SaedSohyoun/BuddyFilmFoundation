@@ -68,6 +68,113 @@ if ($is_admin || $is_filmmaker) {
     .navbar.bg-dark {
         background-color: #000 !important;
     }
+
+    /* Modern Dropdown Styling */
+    .dropdown-menu {
+        background: linear-gradient(145deg, rgba(26, 26, 26, 0.95) 0%, rgba(40, 40, 40, 0.95) 100%);
+        border: 1px solid rgba(226, 0, 185, 0.3);
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(20px);
+        margin-top: 0.8rem;
+        padding: 0.5rem;
+        min-width: 200px;
+        animation: dropdownFadeIn 0.3s ease-out;
+        transform-origin: top center;
+    }
+
+    @keyframes dropdownFadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.95);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .dropdown-item {
+        color: white;
+        padding: 0.8rem 1.2rem;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-radius: 8px;
+        margin: 0.2rem 0;
+        font-weight: 500;
+        font-size: 0.9rem;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid transparent;
+    }
+
+    .dropdown-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(226, 0, 185, 0.1), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .dropdown-item:hover {
+        background: linear-gradient(135deg, rgba(226, 0, 185, 0.15) 0%, rgba(226, 0, 185, 0.05) 100%);
+        color: rgba(226, 0, 185, 1);
+        transform: translateX(8px) scale(1.02);
+        border-color: rgba(226, 0, 185, 0.3);
+        box-shadow: 0 5px 15px rgba(226, 0, 185, 0.2);
+    }
+
+    .dropdown-item:hover::before {
+        left: 100%;
+    }
+
+    .dropdown-toggle::after {
+        border-top-color: rgba(226, 0, 185, 1);
+        margin-left: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .dropdown-toggle:hover::after {
+        border-top-color: white;
+        transform: rotate(180deg);
+    }
+
+    /* Hover effect voor dropdown trigger */
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    /* Dropdown arrow styling */
+    .dropdown-toggle {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .dropdown-toggle:hover {
+        text-shadow: 0 0 10px rgba(226, 0, 185, 0.5);
+    }
+
+    /* Responsive dropdown */
+    @media (max-width: 768px) {
+        .dropdown-menu {
+            background: rgba(26, 26, 26, 0.98);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            min-width: 200px;
+        }
+
+        .dropdown-item {
+            padding: 0.7rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .dropdown-item:hover {
+            transform: translateX(5px) scale(1.01);
+        }
+    }
     </style>
 </head>
 
@@ -99,6 +206,24 @@ if ($is_admin || $is_filmmaker) {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $base_path ?>production.php">PRODUCTION</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" style="color: rgba(226, 0, 185, 1) !important;">
+                                PROJECTS
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?= $base_path ?>project1.php">Buddy Career Boost</a>
+                                </li>
+                                <li><a class="dropdown-item" href="<?= $base_path ?>project2.php">Welkom-the film</a>
+                                </li>
+                                <li><a class="dropdown-item" href="<?= $base_path ?>project3.php">Trojaanse Wijven</a>
+                                </li>
+                                <li><a class="dropdown-item" href="<?= $base_path ?>project4.php">Stories That
+                                        Matter</a></li>
+                                <li><a class="dropdown-item" href="<?= $base_path ?>project5.php">Talent is
+                                        Everywhere</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $base_path ?>in_development.php">IN DEVELOPMENT</a>
