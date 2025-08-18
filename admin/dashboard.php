@@ -9,11 +9,9 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
 ?>
 
 <style>
-body {
+.dashboard-container {
     background-color: black;
     color: white;
-    margin: 0;
-    padding: 0;
     font-family: 'Segoe UI', sans-serif;
     font-size: 1rem;
     line-height: 1.5;

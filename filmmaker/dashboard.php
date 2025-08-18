@@ -108,11 +108,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profiel'])) {
 ?>
 
 <style>
-body {
+.dashboard-container {
     background-color: black;
     color: white;
-    margin: 0;
-    padding: 0;
     font-family: 'Segoe UI', sans-serif;
     font-size: 1rem;
     line-height: 1.5;

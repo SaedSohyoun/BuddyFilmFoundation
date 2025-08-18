@@ -26,11 +26,9 @@ if (isset($_GET['markeer_gelezen']) && is_numeric($_GET['markeer_gelezen'])) {
 ?>
 
 <style>
-body {
+.admin-container {
     background-color: black;
     color: white;
-    margin: 0;
-    padding: 0;
     font-family: 'Segoe UI', sans-serif;
     font-size: 1rem;
     line-height: 1.5;

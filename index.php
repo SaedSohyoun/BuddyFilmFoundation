@@ -377,30 +377,57 @@ body {
 .btn-group-left {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: 2rem;
+    margin-top: 3rem;
     flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
 }
 
 .btn-outline-primary {
     font-size: 1.1rem;
-    padding: 0.8rem 2rem;
-    border-radius: 30px;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
     color: rgba(0, 130, 137, 1);
+    background: transparent;
     border: 2px solid rgba(0, 130, 137, 1);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-decoration: none;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(0, 130, 137, 0.2);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 25px rgba(0, 130, 137, 0.2);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.btn-outline-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
 }
 
 .btn-outline-primary:hover {
     background: linear-gradient(135deg, rgba(0, 130, 137, 1) 0%, rgba(0, 100, 105, 1) 100%);
     color: white;
     text-decoration: none;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 130, 137, 0.4);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 130, 137, 0.5);
+    border: 2px solid rgba(0, 130, 137, 1);
+}
+
+.btn-outline-primary:hover::before {
+    left: 100%;
+}
+
+.btn-outline-primary:active {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 130, 137, 0.4);
 }
 
 /* Content Sections */
@@ -982,6 +1009,13 @@ body {
 
     .btn-group-left {
         gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn-outline-primary {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.8rem;
+        border-radius: 40px;
     }
 
     .content-section,

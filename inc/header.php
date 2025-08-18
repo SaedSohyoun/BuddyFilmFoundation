@@ -184,174 +184,167 @@ if ($is_admin || $is_filmmaker) {
         box-shadow: 0 0 0 0.3rem rgba(0, 130, 137, 0.2);
     }
 
-    .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath
-stroke='rgba%28255, 255, 255, 0.9%29'stroke-linecap='round'stroke-miterlimit='10'stroke-width='2.5'd='M4 7h22M4
-15h22M4 23h22'/%3e%3c/svg%3e");
+    /* Modern Dropdown Styling */
+    .dropdown-menu {
+        background: linear-gradient(145deg, rgba(26, 26, 26, 0.95) 0%, rgba(40, 40, 40, 0.95) 100%);
+        border: 1px solid rgba(226, 0, 185, 0.3);
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(20px);
+        margin-top: 0.8rem;
+        padding: 0.5rem;
+        min-width: 200px;
+        animation: dropdownFadeIn 0.3s ease-out;
+        transform-origin: top center;
+    }
 
+    @keyframes dropdownFadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.95);
         }
 
-        /* Modern Dropdown Styling */
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .dropdown-item {
+        color: white;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-radius: 6px;
+        margin: 0.1rem 0;
+        font-weight: 500;
+        font-size: 0.8rem;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid transparent;
+    }
+
+    .dropdown-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(226, 0, 185, 0.1), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .dropdown-item:hover {
+        background: linear-gradient(135deg, rgba(226, 0, 185, 0.15) 0%, rgba(226, 0, 185, 0.05) 100%);
+        color: rgba(226, 0, 185, 1);
+        transform: translateX(8px) scale(1.02);
+        border-color: rgba(226, 0, 185, 0.3);
+        box-shadow: 0 5px 15px rgba(226, 0, 185, 0.2);
+    }
+
+    .dropdown-item:hover::before {
+        left: 100%;
+    }
+
+    .dropdown-toggle::after {
+        border-top-color: rgba(226, 0, 185, 1);
+        margin-left: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .dropdown-toggle:hover::after {
+        border-top-color: white;
+        transform: rotate(180deg);
+    }
+
+    /* Hover effect voor dropdown trigger */
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    /* Dropdown arrow styling */
+    .dropdown-toggle {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .dropdown-toggle:hover {
+        text-shadow: 0 0 10px rgba(226, 0, 185, 0.5);
+    }
+
+    /* Responsive dropdown */
+    @media (max-width: 768px) {
         .dropdown-menu {
-            background: linear-gradient(145deg, rgba(26, 26, 26, 0.95) 0%, rgba(40, 40, 40, 0.95) 100%);
-            border: 1px solid rgba(226, 0, 185, 0.3);
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(20px);
-            margin-top: 0.8rem;
-            padding: 0.5rem;
-            min-width: 200px;
-            animation: dropdownFadeIn 0.3s ease-out;
-            transform-origin: top center;
-        }
-
-        @keyframes dropdownFadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-10px) scale(0.95);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            background: rgba(26, 26, 26, 0.98);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            min-width: 180px;
         }
 
         .dropdown-item {
-            color: white;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-radius: 6px;
-            margin: 0.1rem 0;
-            font-weight: 500;
-            font-size: 0.8rem;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid transparent;
-        }
-
-        .dropdown-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(226, 0, 185, 0.1), transparent);
-            transition: left 0.5s ease;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
         }
 
         .dropdown-item:hover {
-            background: linear-gradient(135deg, rgba(226, 0, 185, 0.15) 0%, rgba(226, 0, 185, 0.05) 100%);
-            color: rgba(226, 0, 185, 1);
-            transform: translateX(8px) scale(1.02);
-            border-color: rgba(226, 0, 185, 0.3);
-            box-shadow: 0 5px 15px rgba(226, 0, 185, 0.2);
+            transform: translateX(5px) scale(1.01);
+        }
+    }
+
+    /* Responsive Header */
+    @media (max-width: 991px) {
+        .navbar {
+            padding: 0.5rem 0;
         }
 
-        .dropdown-item:hover::before {
-            left: 100%;
+        .navbar-collapse {
+            background: rgba(0, 0, 0, 0.98);
+            border-radius: 18px;
+            margin-top: 0.8rem;
+            padding: 1rem;
+            border: 2px solid rgba(0, 130, 137, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .dropdown-toggle::after {
-            border-top-color: rgba(226, 0, 185, 1);
-            margin-left: 0.5rem;
-            transition: all 0.3s ease;
+        .nav-link {
+            padding: 0.6rem 0.8rem !important;
+            margin: 0.15rem 0;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.6rem;
         }
 
-        .dropdown-toggle:hover::after {
-            border-top-color: white;
-            transform: rotate(180deg);
+        .nav-link:hover {
+            transform: translateX(8px);
+            border-color: rgba(0, 130, 137, 0.5);
         }
 
-        /* Hover effect voor dropdown trigger */
-        .nav-item.dropdown:hover .dropdown-menu {
-            display: block;
+        .navbar-brand {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .navbar-brand {
+            font-size: 0.9rem;
+            letter-spacing: 0.6px;
         }
 
-        /* Dropdown arrow styling */
-        .dropdown-toggle {
-            position: relative;
-            transition: all 0.3s ease;
+        .nav-link {
+            font-size: 0.55rem;
+            padding: 0.5rem 0.7rem !important;
+            letter-spacing: 0.2px;
         }
 
-        .dropdown-toggle:hover {
-            text-shadow: 0 0 10px rgba(226, 0, 185, 0.5);
+        .navbar {
+            padding: 0.3rem 0;
         }
 
-        /* Responsive dropdown */
-        @media (max-width: 768px) {
-            .dropdown-menu {
-                background: rgba(26, 26, 26, 0.98);
-                border-radius: 8px;
-                margin-top: 0.5rem;
-                min-width: 180px;
-            }
-
-            .dropdown-item {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.75rem;
-            }
-
-            .dropdown-item:hover {
-                transform: translateX(5px) scale(1.01);
-            }
+        .navbar-collapse {
+            padding: 0.6rem;
+            border-radius: 10px;
         }
-
-        /* Responsive Header */
-        @media (max-width: 991px) {
-            .navbar {
-                padding: 0.5rem 0;
-            }
-
-            .navbar-collapse {
-                background: rgba(0, 0, 0, 0.98);
-                border-radius: 18px;
-                margin-top: 0.8rem;
-                padding: 1rem;
-                border: 2px solid rgba(0, 130, 137, 0.2);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            }
-
-            .nav-link {
-                padding: 0.6rem 0.8rem !important;
-                margin: 0.15rem 0;
-                border-radius: 10px;
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                font-size: 0.6rem;
-            }
-
-            .nav-link:hover {
-                transform: translateX(8px);
-                border-color: rgba(0, 130, 137, 0.5);
-            }
-
-            .navbar-brand {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .navbar-brand {
-                font-size: 0.9rem;
-                letter-spacing: 0.6px;
-            }
-
-            .nav-link {
-                font-size: 0.55rem;
-                padding: 0.5rem 0.7rem !important;
-                letter-spacing: 0.2px;
-            }
-
-            .navbar {
-                padding: 0.3rem 0;
-            }
-
-            .navbar-collapse {
-                padding: 0.6rem;
-                border-radius: 10px;
-            }
-        }
+    }
     </style>
 </head>
 
@@ -390,9 +383,9 @@ stroke='rgba%28255, 255, 255, 0.9%29'stroke-linecap='round'stroke-miterlimit='10
                                 PROJECTS
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= $base_path ?>project1.php">Buddy Career Boost</a>
+                                <li><a class="dropdown-item" href="<?= $base_path ?>buddy_career_boost.php">Buddy Career Boost</a>
                                 </li>
-                                <li><a class="dropdown-item" href="<?= $base_path ?>project2.php">Welkom-the film</a>
+                                <li><a class="dropdown-item" href="<?= $base_path ?>welkom_the_film.php">Welkom-the film</a>
                                 </li>
                                 <li><a class="dropdown-item" href="<?= $base_path ?>project3.php">Trojaanse Wijven</a>
                                 </li>

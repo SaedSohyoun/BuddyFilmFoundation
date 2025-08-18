@@ -1,28 +1,12 @@
 <?php
 include 'inc/header.php';
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IN DEVELOPMENT</title>
-</head>
 <style>
-* {
-    padding: 0;
-    margin: 0;
+.developmentContainer * {
     box-sizing: border-box;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+.developmentContainer {
     background-color: black;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -34,7 +18,7 @@ body {
     src: url(./assets/Prism-Regular.otf);
 }
 
-h2 {
+.developmentContainer h2 {
     color: #00A3A1;
     font-size: 3rem;
     font-weight: 500;
@@ -45,15 +29,14 @@ h2 {
 }
 
 .developmentContainer {
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - 80px);
     background-image: url('./uploads/indev/background.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    padding-top: 20px;
 }
 
 .devHeader {
@@ -271,7 +254,7 @@ button:hover {
         max-width: 200px;
     }
     
-    h2 {
+    .developmentContainer h2 {
         font-size: 2rem;
         line-height: 2.5rem;
     }
@@ -422,8 +405,5 @@ button:hover {
 
         </section>
     </main>
-</body>
-
-</html>
 
 <?php include 'inc/footer.php'; ?>
