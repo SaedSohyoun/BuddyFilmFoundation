@@ -44,8 +44,12 @@ body {
 .page-header h1 {
     color: rgba(0, 130, 137, 1);
     font-size: 3rem;
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 1rem;
+    font-family: 'Prism', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
 }
 
 .page-header p {
@@ -156,9 +160,12 @@ body {
 .video-title {
     color: rgba(0, 130, 137, 1);
     font-size: 1.3rem;
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 1rem;
     line-height: 1.4;
+    font-family: 'Prism', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .video-description {
@@ -343,6 +350,9 @@ body {
 @media (max-width: 768px) {
     .page-header h1 {
         font-size: 2rem;
+        font-family: 'Prism', 'Segoe UI', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .search-form {

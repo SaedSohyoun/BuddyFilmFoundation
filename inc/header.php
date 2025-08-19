@@ -27,6 +27,44 @@ if ($is_admin || $is_filmmaker) {
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+    @font-face {
+        font-family: 'Prism';
+        src: url('<?= $base_path ?>Prism-Regular.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* Heading Styles */
+    h1, h2, h3 {
+        font-family: 'Prism', 'Montserrat', 'Segoe UI', sans-serif;
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    h1 {
+        font-size: 3rem;
+        color: rgba(0, 130, 137, 1);
+        text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        color: rgba(0, 130, 137, 1);
+        text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    h3 {
+        font-size: 2rem;
+        color: rgba(0, 130, 137, 1);
+        text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
     /* Alternative Modern Header Styling */
     html,
     body {
@@ -274,6 +312,18 @@ if ($is_admin || $is_filmmaker) {
 
     /* Responsive dropdown */
     @media (max-width: 768px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+
         .dropdown-menu {
             background: rgba(26, 26, 26, 0.98);
             border-radius: 8px;
@@ -293,6 +343,18 @@ if ($is_admin || $is_filmmaker) {
 
     /* Responsive Header */
     @media (max-width: 991px) {
+        h1 {
+            font-size: 2.8rem;
+        }
+        
+        h2 {
+            font-size: 2.3rem;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+        }
+
         .navbar {
             padding: 0.5rem 0;
         }
@@ -325,6 +387,18 @@ if ($is_admin || $is_filmmaker) {
     }
 
     @media (max-width: 576px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+
         .navbar-brand {
             font-size: 0.9rem;
             letter-spacing: 0.6px;

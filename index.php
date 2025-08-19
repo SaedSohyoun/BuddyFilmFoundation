@@ -66,10 +66,13 @@ body {
 .slide-title {
     color: rgba(0, 130, 137, 1);
     font-size: 2.5rem;
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 1.5rem;
     text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
     animation: fadeInUp 0.8s ease-out;
+    font-family: 'Prism', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 .slide-description {
@@ -353,11 +356,12 @@ body {
 .hero-title {
     color: rgba(0, 130, 137, 1);
     font-size: 1.5rem;
-    font-weight: 300;
+    font-weight: normal;
     margin-bottom: 2rem;
     text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
     letter-spacing: 2px;
     text-transform: uppercase;
+    font-family: 'Prism', 'Segoe UI', sans-serif;
 }
 
 .hero-logo {
@@ -449,9 +453,12 @@ body {
 .section-title {
     color: rgba(0, 130, 137, 1);
     font-size: 2.5rem;
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 1.5rem;
     text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
+    font-family: 'Prism', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .section-text {
@@ -640,17 +647,23 @@ body {
 .who-we-are-title {
     color: rgba(0, 130, 137, 1);
     font-size: 2.5rem;
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 1rem;
     text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
+    font-family: 'Prism', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .beliefs-title {
     color: rgba(0, 130, 137, 1);
     font-size: 1.8rem;
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 1rem;
     text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
+    font-family: 'Prism', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .who-we-are-content-text p {
@@ -680,11 +693,12 @@ body {
 .statistics-title {
     color: rgba(0, 130, 137, 1);
     font-size: 2.5rem;
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 3rem;
     text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-family: 'Prism', 'Segoe UI', sans-serif;
 }
 
 .statistics-grid {
@@ -1001,6 +1015,9 @@ body {
 
     .hero-title {
         font-size: 1.2rem;
+        font-family: 'Prism', 'Segoe UI', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .hero-logo {
@@ -1041,11 +1058,17 @@ body {
 
     .section-title {
         font-size: 2rem;
+        font-family: 'Prism', 'Segoe UI', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .statistics-title {
         font-size: 2rem;
         margin-bottom: 2rem;
+        font-family: 'Prism', 'Segoe UI', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .statistics-grid {
@@ -1104,10 +1127,16 @@ body {
 
     .who-we-are-title {
         font-size: 2rem;
+        font-family: 'Prism', 'Segoe UI', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .beliefs-title {
         font-size: 1.5rem;
+        font-family: 'Prism', 'Segoe UI', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .who-we-are-content-text p {

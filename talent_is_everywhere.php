@@ -4,6 +4,13 @@ include 'inc/connectie.php';
 include 'inc/header.php';
 ?>
 <style>
+@font-face {
+    font-family: 'Prism';
+    src: url('Prism-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background-color: black;
     color: white;
@@ -12,6 +19,37 @@ body {
     font-family: 'Segoe UI', sans-serif;
     font-size: 1rem;
     line-height: 1.5;
+}
+
+/* Heading Styles */
+h1, h2, h3 {
+    font-family: 'Prism', 'Segoe UI', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+    font-size: 3rem;
+    color: rgba(0, 130, 137, 1);
+    text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: rgba(0, 130, 137, 1);
+    text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h3 {
+    font-size: 2rem;
+    color: rgba(0, 130, 137, 1);
+    text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Hero Section */
@@ -126,6 +164,18 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
