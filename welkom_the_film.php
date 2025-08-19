@@ -16,12 +16,24 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, rgba(0, 130, 137, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(135deg, rgba(99, 65, 89, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%), url('uploads/WTF/WTF.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-bottom: 1px solid rgba(0, 130, 137, 0.3);
-    padding: 4rem 0;
-    margin-bottom: 3rem;
+    padding: 0;
+    margin: 0;
     position: relative;
     overflow: hidden;
+    height: 140vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 50px rgba(0, 130, 137, 0.3), inset 0 0 100px rgba(0, 130, 137, 0.1);
+    margin-top: -50px;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
 }
 
 .hero-section::before {
@@ -69,238 +81,6 @@ body {
     font-style: italic;
 }
 
-/* Content Sections */
-.content-section {
-    background-color: #1a1a1a;
-    border-radius: 15px;
-    padding: 3rem;
-    margin-bottom: 3rem;
-    border: 1px solid #333;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.content-section:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-}
-
-.section-title {
-    color: rgba(0, 130, 137, 1);
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.section-text {
-    color: #e0e0e0;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 1rem;
-}
-
-/* Image Grid */
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.image-card {
-    background-color: #2a2a2a;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 1px solid #444;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.image-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    border-color: rgba(0, 130, 137, 0.5);
-}
-
-.project-image {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    background-color: #1a1a1a;
-}
-
-.image-content {
-    padding: 1.5rem;
-}
-
-.image-title {
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.image-description {
-    color: #ccc;
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-/* Logline Section */
-.logline-section {
-    background: linear-gradient(135deg, rgba(0, 130, 137, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
-    border-radius: 15px;
-    padding: 3rem;
-    border: 1px solid rgba(0, 130, 137, 0.3);
-    margin-bottom: 3rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.logline-title {
-    color: rgba(0, 130, 137, 1);
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.logline-text {
-    color: #e0e0e0;
-    font-size: 1.3rem;
-    line-height: 1.8;
-    font-style: italic;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.logline-reference {
-    color: #ccc;
-    font-size: 1rem;
-    text-align: center;
-    font-style: italic;
-}
-
-/* Two Column Layout */
-.two-column {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-    margin-top: 2rem;
-}
-
-.text-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.image-column {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.single-image {
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-}
-
-.single-image:hover {
-    transform: scale(1.02);
-}
-
-.single-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Newsletter Section */
-.newsletter-section {
-    background: linear-gradient(135deg, rgba(226, 0, 185, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
-    border-radius: 15px;
-    padding: 3rem;
-    border: 1px solid rgba(226, 0, 185, 0.3);
-    margin-bottom: 3rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.newsletter-title {
-    color: rgba(226, 0, 185, 1);
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.newsletter-text {
-    color: #e0e0e0;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-.newsletter-form {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.newsletter-input {
-    background-color: #2a2a2a;
-    border: 1px solid #555;
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 30px;
-    font-size: 1rem;
-    flex: 1;
-    min-width: 250px;
-    transition: all 0.3s ease;
-}
-
-.newsletter-input:focus {
-    outline: none;
-    border-color: rgba(226, 0, 185, 1);
-    box-shadow: 0 0 0 0.2rem rgba(226, 0, 185, 0.25);
-}
-
-.newsletter-btn {
-    background: linear-gradient(135deg, rgba(226, 0, 185, 1) 0%, rgba(180, 0, 150, 1) 100%);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    white-space: nowrap;
-}
-
-.newsletter-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(226, 0, 185, 0.4);
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-title {
@@ -345,6 +125,275 @@ body {
         min-width: 200px;
     }
 }
+
+/* Support Section */
+.support-section {
+    background-color: #000000ff;
+    border-radius: 15px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.support-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.support-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.support-text {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.donate-btn {
+    background: linear-gradient(135deg, rgba(0, 130, 137, 1) 0%, rgba(0, 100, 105, 1) 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 130, 137, 0.3);
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.donate-btn:hover {
+    background: linear-gradient(135deg, rgba(0, 100, 105, 1) 0%, rgba(0, 130, 137, 1) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 130, 137, 0.4);
+}
+
+.payment-methods {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.payment-method {
+    height: 30px;
+    width: auto;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.payment-method:hover {
+    filter: grayscale(0%);
+}
+
+.section-title {
+    color: rgba(0, 130, 137, 1);
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px rgba(0, 130, 137, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Real Life Stories Section */
+.real-life-stories-section {
+    background-color: black;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.real-life-stories-content {
+    text-align: left;
+}
+
+.real-life-stories-text {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+/* Film References Section */
+.film-references-section {
+    background-color: black;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.film-references-content {
+    text-align: center;
+}
+
+.film-references-grid {
+    display: flex;
+    width: 100%;
+    height: 400px;
+    margin-top: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.film-reference-item {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.film-reference-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background-color: black;
+    z-index: 2;
+}
+
+.film-reference-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.film-reference-text {
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    z-index: 3;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0.5rem;
+    border-radius: 5px;
+    max-width: 90%;
+}
+
+/* Stories Section */
+.stories-section {
+    background-color: black;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stories-content {
+    text-align: left;
+}
+
+.stories-text {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+/* Actor References Section */
+.actor-references-section {
+    background-color: black;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.actor-references-content {
+    text-align: center;
+}
+
+.actor-references-grid {
+    display: flex;
+    width: 100%;
+    height: 700px;
+    margin-top: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.actor-reference-item {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.actor-reference-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background-color: black;
+    z-index: 2;
+}
+
+.actor-reference-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.actor-reference-text {
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    z-index: 3;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0.5rem;
+    border-radius: 5px;
+    max-width: 90%;
+}
 </style>
 
 <!-- Hero Section -->
@@ -355,96 +404,101 @@ body {
     </div>
 </div>
 
-<!-- Main Content -->
-<div class="content-section">
-    <div class="two-column">
-        <div class="text-column">
-            <h2 class="section-title">About the Film</h2>
-            <p class="section-text">WELCOME is a light-hearted coming-of-age film that takes place in a dull Dutch
-                village and revolves around the lives of the five main characters Tara, Hassan, Wilma, Shilêr and
-                Ronnie.</p>
-            <p class="section-text">When the local supermarket starts a work experience project for refugees and shortly
-                afterwards it is announced that the local asylum seekers center is going to close, everyone is
-                confronted with their status in life and all the characters have to reinvent themselves.</p>
+<!-- Support Us Section -->
+<div class="support-section">
+    <div class="support-content">
+        <div>
+            <img src="uploads/WTF/1200x675_edited.jpg" alt="Support Us" class="support-image">
         </div>
-        <div class="image-column">
-            <div class="single-image">
-                <img src="uploads/welkom/w.png" alt="Welkom Film Poster">
+        <div>
+            <h2 class="section-title">LOGLINE</h2>
+            <p class="support-text">
+                WELCOME is a light-hearted coming-of-age film that takes place in a dull Dutch village and revolves
+                around the lives of the five main characters Tara, Hassan, Wilma, Shilêr and Ronnie.
+                When the local supermarket starts a work experience project for refugees and shortly afterwards it is
+                announced that the local asylum seekers center is going to close, everyone is confronted with their
+                status in life and all the characters have to reinvent themselves.
+                <br><br>
+                Tina Fey & Amy Poehler in 'Sisters' (2015)
+            </p>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Real Life Stories Section -->
+<div class="real-life-stories-section">
+    <div class="real-life-stories-content">
+        <h2 class="section-title">REAL LIFE STORIES</h2>
+        <p class="real-life-stories-text">
+            The idea for this film is the reason why the Buddy Film Foundation was founded in 2017.
+            <br><br>
+            WELCOME is a movie written entirely for the available cast and crew we've met over the years. The story for
+            the film is largely based on real stories, real people and real events. A film that brings together the
+            stories that we have heard in recent years from our participants, of whose lives we have become a part and
+            vice versa. WELCOME must become a film in which and with which they can show their talents and thereby
+            definitively present their business card to the Dutch film sector. In this way we hope that our new film
+            colleagues, from thirteen different countries, can continue their career in Dutch film, where their passion
+            lies.
+        </p>
+    </div>
+</div>
+
+<!-- Film References Section -->
+<div class="film-references-section">
+    <div class="film-references-content">
+        <div class="film-references-grid">
+            <div class="film-reference-item">
+                <img src="uploads/WTF/aliswedding1 (1).jpg" alt="Ali's Wedding" class="film-reference-image">
+                <p class="film-reference-text">Helana Sawires & Osamah Sami in 'Ali's Wedding' (2017)</p>
             </div>
-            <div class="single-image">
-                <img src="uploads/welkom/1200x675_edited.jpg" alt="Welkom Film Scene">
+
+            <div class="film-reference-item">
+                <img src="uploads/WTF/636491022696321825-LADYBIRD-1.jpg" alt="Lady Bird" class="film-reference-image">
+                <p class="film-reference-text">Saoirse Ronan in 'Lady Bird'</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Logline Section -->
-<div class="logline-section">
-    <h2 class="logline-title">Logline</h2>
-    <p class="logline-text">"A light-hearted coming-of-age film about reinvention and hope in a small Dutch village."
-    </p>
-    <p class="logline-reference">Inspired by films like 'Sisters' (2015) starring Tina Fey & Amy Poehler</p>
+<!-- Stories That Never Make The News Section -->
+<div class="stories-section">
+    <div class="stories-content">
+        <h2 class="section-title">THE STORIES THAT NEVER MAKE THE NEWS</h2>
+        <p class="stories-text">
+            WELCOME is a film in which the diversity and ethnicity of the characters sometimes play a role and sometimes
+            are just a given. Whether it concerns the larger or supporting roles, or even at the figurative level: it is
+            a palette of the diversity that the Netherlands has to offer: young, old, disabled, LGBTQ+, migrant,
+            refugee, immigrant, and native and from almost every conceivable cultural and ethnic background.
+            <br><br>
+            With WELCOME we want to offer a window to the stories that never make the news: the real world, in which
+            people have to survive together, build their lives, make friends, fall in love, be angry and sad and come to
+            unexpected insights into themselves.
+            <br><br>
+            The script for WELCOME was written by Dennis Overeem from an idea of filmmaker Beri Shalmashi and Dennis.
+        </p>
+    </div>
 </div>
 
-<!-- Real Life Stories -->
-<div class="content-section">
-    <h2 class="section-title">Real Life Stories</h2>
-    <p class="section-text">The idea for this film is the reason why the Buddy Film Foundation was founded in 2017.</p>
-    <p class="section-text">WELCOME is a movie written entirely for the available cast and crew we've met over the
-        years. The story for the film is largely based on real stories, real people and real events. A film that brings
-        together the stories that we have heard in recent years from our participants, of whose lives we have become a
-        part and vice versa.</p>
-    <p class="section-text">WELCOME must become a film in which and with which they can show their talents and thereby
-        definitively present their business card to the Dutch film sector. In this way we hope that our new film
-        colleagues, from thirteen different countries, can continue their career in Dutch film, where their passion
-        lies.</p>
-
-    <div class="image-grid">
-        <div class="image-card">
-            <img src="uploads/welkom/aliswedding1.jpg" alt="Ali's Wedding" class="project-image">
-            <div class="image-content">
-                <h3 class="image-title">Helana Sawires & Osamah Sami</h3>
-                <p class="image-description">in 'Ali's Wedding' (2017)</p>
-            </div>
-        </div>
-        <div class="image-card">
-            <img src="uploads/welkom/636491022696321825-LADYBIRD-1-.jpg.webp" alt="Lady Bird" class="project-image">
-            <div class="image-content">
-                <h3 class="image-title">Saoirse Ronan</h3>
-                <p class="image-description">in 'Lady Bird' (2017)</p>
+<!-- Actor References Section -->
+<div class="actor-references-section">
+    <div class="actor-references-content">
+        <div class="actor-references-grid">
+            <div class="actor-reference-item">
+                <img src="uploads/WTF/arabi_ghibeh_welkom.jpg" alt="Arabi Ghibeh" class="actor-reference-image">
+                <p class="actor-reference-text">Actor Arabi Ghibeh from Syria photographed by Bert Nijman</p>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Stories That Never Make the News -->
-<div class="content-section">
-    <h2 class="section-title">The Stories That Never Make the News</h2>
-    <p class="section-text">WELCOME is a film in which the diversity and ethnicity of the characters sometimes play a
-        role and sometimes are just a given. Whether it concerns the larger or supporting roles, or even at the
-        figurative level: it is a palette of the diversity that the Netherlands has to offer: young, old, disabled,
-        LGBTQ+, migrant, refugee, immigrant, and native and from almost every conceivable cultural and ethnic
-        background.</p>
-    <p class="section-text">With WELCOME we want to offer a window to the stories that never make the news: the real
-        world, in which people have to survive together, build their lives, make friends, fall in love, be angry and sad
-        and come to unexpected insights into themselves.</p>
-    <p class="section-text">The script for WELCOME was written by Dennis Overeem from an idea of filmmaker Beri
-        Shalmashi and Dennis.</p>
-
-    <div class="image-grid">
-        <div class="image-card">
-            <img src="uploads/welkom/arabi_ghibeh_welkom.jpg" alt="Actor Arabi Ghibeh" class="project-image">
-            <div class="image-content">
-                <h3 class="image-title">Actor Arabi Ghibeh from Syria</h3>
-                <p class="image-description">photographed by Bert Nijman</p>
-            </div>
-        </div>
-        <div class="image-card">
-            <img src="uploads/welkom/filmrecensie-samba--olivier-nakache-en-eric-toledano.jpg" alt="Samba Film"
-                class="project-image">
-            <div class="image-content">
-                <h3 class="image-title">Actor Omar Sy</h3>
-                <p class="image-description">in 'Samba' (2014)</p>
+<!-- Actor References Section -->
+<div class="actor-references-section">
+    <div class="actor-references-content">
+        <div class="actor-references-grid">
+            <div class="actor-reference-item">
+                <img src="uploads/WTF/filmrecensie-samba--olivier-nakache-en-eric-toledano.jpg" alt="Samba"
+                    class="actor-reference-image">
+                <p class="actor-reference-text">Actor Omar Sy in 'Samba' (2014)</p>
             </div>
         </div>
     </div>

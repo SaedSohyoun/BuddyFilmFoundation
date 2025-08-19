@@ -391,7 +391,7 @@ if ($is_admin || $is_filmmaker) {
                                 </li>
                                 <li><a class="dropdown-item" href="<?= $base_path ?>project4.php">Stories That
                                         Matter</a></li>
-                                <li><a class="dropdown-item" href="<?= $base_path ?>project5.php">Talent is
+                                <li><a class="dropdown-item" href="<?= $base_path ?>talent_is_everywhere.php">Talent is
                                         Everywhere</a></li>
                             </ul>
                         </li>
