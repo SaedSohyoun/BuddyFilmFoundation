@@ -461,7 +461,7 @@ if ($is_admin || $is_filmmaker) {
                                 </li>
                                 <li><a class="dropdown-item" href="<?= $base_path ?>welkom_the_film.php">Welkom-the film</a>
                                 </li>
-                                <li><a class="dropdown-item" href="<?= $base_path ?>project3.php">Trojaanse Wijven</a>
+                                <li><a class="dropdown-item" href="<?= $base_path ?>trojaanse_wijven.php">Trojaanse Wijven</a>
                                 </li>
                                 <li><a class="dropdown-item" href="<?= $base_path ?>stories_that_matter.php">Stories That
                                         Matter</a></li>

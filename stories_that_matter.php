@@ -178,12 +178,12 @@ body {
     height: auto;
     max-height: 120px;
     object-fit: contain;
-    filter: brightness(0) invert(1);
+    filter: brightness(1) invert(0);
     transition: filter 0.3s ease;
 }
 
 .collaborator-item:hover .logo-image {
-    filter: brightness(1) invert(0);
+    filter: brightness(1.1) invert(0);
 }
 
 .collaborator-content {
